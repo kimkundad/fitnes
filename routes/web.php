@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::auth();
@@ -27,5 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'admin'], function() {
 
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
-
-    });
+  Route::resource('admin/category', 'CategoryController');
+  Route::resource('admin/course', 'CourseController');
+  Route::get('admin/table_course', 'Course_tableController@index');
+  Route::resource('admin/course', 'CourseController');
+  Route::resource('admin/trainer', 'TrainerController');
+});

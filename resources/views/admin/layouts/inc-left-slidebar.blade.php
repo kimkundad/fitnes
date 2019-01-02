@@ -33,7 +33,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Menu</li>
                             <li>
-                                <a href="{{url('admin/dashboard')}}">
+                                <a href="{{url('admin/dashboard')}}" {{ (Request::is('admin/dashboard*') ? 'class=mm-active' : '') }}>
                                     <i class="metismenu-icon pe-7s-airplay">
                                     </i>Dashboard / สรุป
                                 </a>
@@ -78,7 +78,7 @@
 
                                 <ul class="mm-show">
                                     <li>
-                                        <a href="#">
+                                        <a href="{{url('admin/trainer')}}" {{ (Request::is('admin/trainer*') ? 'class=mm-active' : '') }}>
                                             <i class="metismenu-icon">
                                             </i>เพิ่ม Trainers
                                         </a>
@@ -94,9 +94,21 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{url('admin/dashboard')}}">
+                                <a href="{{url('admin/table_course')}}" {{ (Request::is('admin/table_course*') ? 'class=mm-active' : '') }}>
                                     <i class="metismenu-icon pe-7s-news-paper">
                                     </i>ตาราง Class
+                                </a>
+                            </li>
+                            <li >
+                                <a href="{{url('admin/category')}}" {{ (Request::is('admin/category*') ? 'class=mm-active' : '') }} >
+                                    <i class="metismenu-icon pe-7s-light">
+                                    </i>ประเภท class
+                                </a>
+                            </li>
+                            <li >
+                                <a href="{{url('admin/course')}}" {{ (Request::is('admin/course*') ? 'class=mm-active' : '') }} >
+                                    <i class="metismenu-icon pe-7s-plugin">
+                                    </i>Class เรียน
                                 </a>
                             </li>
 
