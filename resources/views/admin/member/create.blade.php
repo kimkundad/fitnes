@@ -95,8 +95,50 @@
                                                   <input name="image" id="exampleFile" type="file" class="form-control-file">
                                                   <small class="form-text text-muted">รุปที่แนะนำ ควรเป็นรูปสี่เหลี่ยมด้านเท่า 150 x 150 px ขึ้นไป</small>
                                                 </div>
-                                                <hr />
 
+
+
+
+
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6">
+                                              <div class="position-relative form-group">
+                                                <label for="exampleEmail" class="">ที่อยู่</label>
+                                                <textarea name="course_remark" style="height:120px" class="form-control"></textarea>
+                                              </div>
+
+                                              <div class="position-relative form-group ">
+                                                <label for="exampleEmail" class="">จังหวัด</label>
+                                                <select id="province" name="province" class="form-control">
+                                                  <option value="">- กรุณาเลือกจังหวัด -</option>
+                                              </select>
+                                              </div>
+
+                                              <div class="position-relative form-group ">
+                                                <label for="exampleEmail" class="">อำเภอ</label>
+                                                <select id="amphur" name="amphur" class="form-control">
+                                                  <option value="">- กรุณาเลือกอำเภอ -</option>
+                                              </select>
+                                              </div>
+
+                                              <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสไปรษณีย์</label>
+                                                <input id="postcode" name="postcode" placeholder="10310" type="text" class="form-control">
+                                              </div>
+
+                                            </div>
+
+                                            <div class="col-md-12">
+                                              <hr />
+                                              <br />
+                                            </div>
+
+
+                                            <div class="col-md-6">
                                               <h5 class="card-title">ประเภทสมาชิก</h5>
                                                   <div class="row">
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่เริ่มต้น</label>
@@ -142,34 +184,58 @@
                                                   <label for="exampleEmail" class="">Note</label>
                                                   <textarea name="course_remark" style="height:150px" class="form-control"></textarea>
                                                 </div>
-
-
-
                                             </div>
+
+
+
+
                                             <div class="col-md-6">
-                                              <div class="position-relative form-group">
-                                                <label for="exampleEmail" class="">ที่อยู่</label>
-                                                <textarea name="course_remark" style="height:120px" class="form-control"></textarea>
-                                              </div>
+                                              <h5 class="card-title">Personal Trainer</h5>
+                                                  <div class="row">
 
-                                              <div class="position-relative form-group ">
-                                                <label for="exampleEmail" class="">จังหวัด</label>
-                                                <select id="province" name="province" class="form-control">
-                                                  <option value="">- กรุณาเลือกจังหวัด -</option>
-                                              </select>
-                                              </div>
+                                                    <div class="position-relative form-group col-md-6">
+                                                      <label for="exampleEmail" class="">พนักงาน</label>
+                                                      <select name="cat_id" id="exampleSelect" class="form-control">
+                                                        <option value="1">รายวัน</option>
+                                                        <option value="1">รายเดือน</option>
+                                                        <option value="1">รายปี</option>
+                                                    </select>
+                                                    </div>
 
-                                              <div class="position-relative form-group ">
-                                                <label for="exampleEmail" class="">อำเภอ</label>
-                                                <select id="amphur" name="amphur" class="form-control">
-                                                  <option value="">- กรุณาเลือกอำเภอ -</option>
-                                              </select>
-                                              </div>
+                                                    <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนชั่วโมง</label>
+                                                      <input name="text" placeholder="1500" type="text" class="form-control">
+                                                    </div>
 
-                                              <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสไปรษณีย์</label>
-                                                <input id="postcode" name="postcode" placeholder="10310" type="text" class="form-control">
-                                              </div>
+                                                    <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่หมดอายุ</label>
+                                                      <input type="text" class="form-control" data-toggle="datepicker">
+                                                    </div>
 
+                                                  <div class="position-relative form-group col-md-6">
+                                                    <label for="exampleEmail" class="">ช่องทางการชำระเงิน</label>
+                                                    <select name="cat_id" id="exampleSelect" class="form-control">
+                                                      <option value="1">เงินสด</option>
+                                                      <option value="1">ผ่อนชำระ</option>
+
+                                                  </select>
+                                                  </div>
+
+
+                                                  <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
+                                                    <input name="text" placeholder="1500" type="text" class="form-control">
+                                                  </div>
+                                                  <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
+                                                    <input name="text" placeholder="00" value="0" type="text" class="form-control">
+                                                  </div>
+
+
+
+
+                                                </div>
+
+                                                <div class="position-relative form-group">
+                                                  <label for="exampleEmail" class="">Note</label>
+                                                  <textarea name="course_remark" style="height:150px" class="form-control"></textarea>
+                                                </div>
                                             </div>
 
 
