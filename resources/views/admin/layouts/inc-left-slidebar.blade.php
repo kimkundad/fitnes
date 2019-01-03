@@ -47,8 +47,14 @@
                                 </a>
 
                                 <ul class="mm-show">
+                                  <li>
+                                      <a href="{{url('admin/member')}}" {{ (Request::is('admin/member') ? 'class=mm-active' : '') }}>
+                                          <i class="metismenu-icon">
+                                          </i>รายชื่อสมาชิก
+                                      </a>
+                                  </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{url('admin/member/create')}}" {{ (Request::is('admin/member/create') ? 'class=mm-active' : '') }}>
                                             <i class="metismenu-icon">
                                             </i>สมัครสมาชิก
                                         </a>

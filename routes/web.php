@@ -32,4 +32,5 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/table_course', 'Course_tableController@index');
   Route::resource('admin/course', 'CourseController');
   Route::resource('admin/trainer', 'TrainerController');
+  Route::resource('admin/member', 'MemberController');
 });
