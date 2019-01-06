@@ -119,15 +119,13 @@ class MemberController extends Controller
         $package->save();
 
         $the_id = $package->id;
-          $no_mem = $the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
+          $no_mem = 'GT'.$the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
           $package = member::find($the_id);
           $package->no_mem = $no_mem;
           $package->save();
 
 
-
-
-        return redirect(url('admin/member/'))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
+        return redirect(url('admin/preview/'.$the_id))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
     }
 
     /**
@@ -139,6 +137,19 @@ class MemberController extends Controller
     public function show($id)
     {
         //
+        $objs = member::find($id);
+
+        $data['objs'] = $objs;
+        return view('admin.member.preview', $data);
+    }
+
+    public function preview($id)
+    {
+        //
+        $objs = member::find($id);
+
+        $data['objs'] = $objs;
+        return view('admin.member.preview', $data);
     }
 
     /**

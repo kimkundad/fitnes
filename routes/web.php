@@ -33,4 +33,10 @@ Route::group(['middleware' => 'admin'], function() {
   Route::resource('admin/course', 'CourseController');
   Route::resource('admin/trainer', 'TrainerController');
   Route::resource('admin/member', 'MemberController');
+  Route::get('admin/preview/{id}', 'MemberController@preview')->name('preview');
+  Route::get('admin/table_course/create', 'Course_tableController@create');
+  Route::post('admin/table_course/add_class', 'Course_tableController@post_class');
+  Route::get('get_event', 'Course_tableController@get_event');
+
+
 });

@@ -10,7 +10,8 @@
                                     <img style="width:100%" class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" >
                                 </div>
                                 <div>{{$objs->first_name_mem}} {{$objs->last_name_mem}}
-                                    <div class="page-title-subheading">รายชื่อสมาชิก ของ GT Fitnes แบบ  @if($objs->type_mem == 1)
+                                    <div class="page-title-subheading">รายชื่อสมาชิก ของ GT Fitnes แบบ
+                                    @if($objs->type_mem == 1)
                                     รายวัน
                                     @elseif($objs->type_mem == 2)
                                     รายเดือน

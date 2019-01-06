@@ -41,17 +41,48 @@
                             <div class="col-lg-12 ">
 
 
+                              <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                                  <li class="nav-item">
+                                      <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
+                                          <span>All</span>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
+                                          <span>Yoka</span>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
+                                          <span>Kick Boxing</span>
+                                      </a>
+                                  </li>
+                              </ul>
+
+
                               <div class="tab-content">
-                    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                        <div class="main-card mb-3 card">
-                            <div class="card-body">
-                                <div id='calendar'></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                                  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                                      <div class="main-card mb-3 card">
+                                          <div class="card-body">
+                                              <div id='calendar1'></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
+                                      <div class="main-card mb-3 card">
+                                          <div class="card-body">
+                                              <div id='calendar-list'></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
+                                      <div class="main-card mb-3 card">
+                                          <div class="card-body">
+                                              <div id="calendar-bg-events"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
 
 
 
@@ -69,7 +100,31 @@
 
 
 @section('scripts')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/lib/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/fullcalendar.min.js')}}"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/locale/th.js')}}"></script>
 
+<script>
 
+$(document).ready(function () {
+    $('#calendar1').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay',
+        },
+        events: {
+            url: '{{url('get_event')}}',
+            error: function() {
+
+            }
+        },
+        eventLimit:true,
+        lang: 'th'
+    });
+});
+
+</script>
 
 @stop('scripts')

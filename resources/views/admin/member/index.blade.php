@@ -122,7 +122,7 @@
                                       ชม.
                                     </td>
                                     <td>
-
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-alternate btn-sm" href="{{url('admin/member/'.$u->id)}}" style="color: #fff;float: left;"><i class="lnr-license btn-icon-wrapper"> </i></a>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-primary btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="color: #fff;float: left;"><i class="pe-7s-tools btn-icon-wrapper"> </i></a>
 
 
