@@ -3,6 +3,22 @@
 @section('admin.content')
 
 
+<?php
+                        function DateThai($strDate)
+                        {
+                        $strYear = date("Y",strtotime($strDate))+543;
+                        $strMonth= date("n",strtotime($strDate));
+                        $strDay= date("j",strtotime($strDate));
+                        $strHour= date("H",strtotime($strDate));
+                        $strMinute= date("i",strtotime($strDate));
+                        $strSeconds= date("s",strtotime($strDate));
+                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                        $strMonthThai=$strMonthCut[$strMonth];
+                        return "$strDay $strMonthThai $strYear";
+                        }
+
+                         ?>
+
 <div class="app-page-title">
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
@@ -37,7 +53,104 @@
                             <div class="col-lg-12 ">
 
 
+                              <div class="main-card card">
+                              <div class="card-body">
+                                <h5 class="card-title">ผลการค้นหา</h5>
 
+                              <table style="width: 100%;"  class="table table-hover table-striped ">
+                                <thead>
+                                <tr>
+                                    <th>หมายเลข</th>
+                                    <th>สถานะ</th>
+                                    <th>
+                                      ชื่อ-นามสกุล
+                                    </th>
+
+
+
+                                    <th>ประเภท</th>
+                                    <th>จำนวน ขม.T.</th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                  @if(isset($objs))
+                                  @foreach($objs as $u)
+                                  <tr>
+                                    <td>
+                                      #{{$u->no_mem}}
+                                    </td>
+                                    <td>
+                                      <button class="mb-2 mr-2 btn btn-success btn-sm"><?php echo DateThai($u->end_at); ?>
+                                            </button>
+                                    </td>
+                                    <td>
+                                      <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-left flex2">
+                                                                <div class="widget-heading">{{$u->first_name_mem}} {{$u->last_name_mem}}</div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    </td>
+
+                                    <td>
+                                      @if($u->type_mem == 1)
+                                      รายวัน
+                                      @elseif($u->type_mem == 2)
+                                      รายเดือน
+                                      @else
+                                      รายปี
+                                      @endif
+                                    </td>
+                                    <td>
+                                      @if($u->pt_hr == null)
+                                      0
+                                      @else
+                                      {{$u->pt_hr}}
+                                      @endif
+                                      ชม.
+                                    </td>
+                                    <td>
+
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-primary btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="color: #fff;float: left;"><i class="pe-7s-tools btn-icon-wrapper"> </i></a>
+
+
+                                      <form  action="{{url('admin/member/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+                                          <input type="hidden" name="_method" value="DELETE">
+                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                          <button type="submit" class="mb-2 mr-2 btn-icon btn-icon-only btn btn-warning btn-sm" style="color: #fff;"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                                      </form>
+
+                                    </td>
+                                  </tr>
+                                  @endforeach
+                                  @endif
+
+
+
+                                </tbody>
+
+
+                              </table>
+
+
+
+
+
+
+                              </div>
+                              </div>
 
 
 

@@ -6,12 +6,17 @@
 <div class="app-page-title">
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
-                                <div class="page-title-icon">
-                                    <i class="pe-7s-users icon-gradient bg-tempting-azure">
-                                    </i>
+                                <div class="page-title-icon" style="padding: 2px;">
+                                    <img style="width:100%" class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" >
                                 </div>
-                                <div>รายชื่อสมาชิก GT Fitnes
-                                    <div class="page-title-subheading">รายชื่อสมาชิก ของ GT Fitnes ทั้งหมด
+                                <div>{{$objs->first_name_mem}} {{$objs->last_name_mem}}
+                                    <div class="page-title-subheading">รายชื่อสมาชิก ของ GT Fitnes แบบ  @if($objs->type_mem == 1)
+                                    รายวัน
+                                    @elseif($objs->type_mem == 2)
+                                    รายเดือน
+                                    @else
+                                    รายปี
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -45,13 +50,13 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อ<span class="text-danger">*</span></label>
-                                                  <input name="first_name_mem" value="{{ old('first_name_mem') }}" placeholder="Porrapat" type="text" class="form-control">
+                                                  <input name="first_name_mem" value="{{$objs->first_name_mem}}" placeholder="Porrapat" type="text" class="form-control">
                                                 </div>
                                                 <div class="position-relative form-group"><label for="exampleEmail11" class="">นามสกุล<span class="text-danger">*</span></label>
-                                                  <input name="last_name_mem" value="{{ old('last_name_mem') }}" placeholder="Warker" type="text" class="form-control">
+                                                  <input name="last_name_mem" value="{{$objs->last_name_mem}}" placeholder="Warker" type="text" class="form-control">
                                                 </div>
                                                 <div class="position-relative form-group"><label for="exampleEmail11" class="">วัน/เดือน/ปี เกิด<span class="text-danger">*</span></label>
-                                                  <input name="birthday_mem" value="{{ old('birthday_mem') }}" type="text" class="form-control datepicker" data-toggle="datepicker">
+                                                  <input name="birthday_mem" value="{{$objs->birthday_mem}}" type="text" class="form-control datepicker" data-toggle="datepicker">
                                                 </div>
 
 
@@ -60,12 +65,12 @@
                                                       <label for="exampleEmail11" class="">เพศ</label>
                                                       <br /><br />
                                                         <div class="custom-radio custom-control">
-                                                          <input type="radio" id="exampleCustomRadio" name="sex_mem" value="0" class="custom-control-input" @if(old('sex_mem') == 0) checked @endif>
+                                                          <input type="radio" id="exampleCustomRadio" name="sex_mem" value="0" class="custom-control-input" @if($objs->sex_mem == 0) checked @endif>
                                                           <label class="custom-control-label" for="exampleCustomRadio">ชาย</label>
                                                         </div>
                                                         <br />
                                                         <div class="custom-radio custom-control">
-                                                          <input type="radio" id="exampleCustomRadio2" name="sex_mem" value="1" class="custom-control-input"  @if(old('sex_mem') == 1) checked @endif>
+                                                          <input type="radio" id="exampleCustomRadio2" name="sex_mem" value="1" class="custom-control-input"  @if($objs->sex_mem == 1) checked @endif>
                                                           <label class="custom-control-label" for="exampleCustomRadio2">หญิง
                                                           </label>
                                                         </div>
@@ -74,20 +79,20 @@
 
                                                     <div class="col-md-6">
                                                       <label for="exampleEmail11" class="">สัดส่วน</label>
-                                                      <div class="position-relative form-group"><input  placeholder="สูง" name="height_mem" value="{{ old('height_mem') }}" type="text" class="mr-1 form-control"></div>
-                                                      <div class="position-relative form-group"><input  placeholder="หนัก" name="width_mem" value="{{ old('width_mem') }}" type="text" class="mr-1 form-control"></div>
+                                                      <div class="position-relative form-group"><input  placeholder="สูง" name="height_mem" value="{{$objs->height_mem}}" type="text" class="mr-1 form-control"></div>
+                                                      <div class="position-relative form-group"><input  placeholder="หนัก" name="width_mem" value="{{$objs->width_mem}}" type="text" class="mr-1 form-control"></div>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="position-relative form-group"><label for="exampleEmail11" class="">ช่องทางการติดต่อ</label>
-                                                  <input name="phone_mem" placeholder="เบอร์ติดต่อ" value="{{ old('phone_mem') }}" type="text" class="form-control">
+                                                  <input name="phone_mem" placeholder="เบอร์ติดต่อ" value="{{$objs->phone_mem}}" type="text" class="form-control">
                                                   <br />
-                                                  <input name="email_mem" placeholder="Email" value="{{ old('email_mem') }}" type="text" class="form-control">
+                                                  <input name="email_mem" placeholder="Email" value="{{$objs->email_mem}}" type="text" class="form-control">
                                                   <br />
                                                   <div class="row">
-                                                    <div class="position-relative form-group col-md-6"><input  placeholder="Line ID" value="{{ old('line_mem') }}" name="line_mem" type="text" class="mr-1 form-control"></div>
-                                                    <div class="position-relative form-group col-md-6"><input  placeholder="Facebook" value="{{ old('facebook_mem') }}" name="facebook_mem" type="text" class="mr-1 form-control"></div>
+                                                    <div class="position-relative form-group col-md-6"><input  placeholder="Line ID" value="{{$objs->line_mem}}" name="line_mem" type="text" class="mr-1 form-control"></div>
+                                                    <div class="position-relative form-group col-md-6"><input  placeholder="Facebook" value="{{$objs->facebook_mem}}" name="facebook_mem" type="text" class="mr-1 form-control"></div>
                                                   </div>
 
                                                 </div>
@@ -111,25 +116,25 @@
                                             <div class="col-md-6">
                                               <div class="position-relative form-group">
                                                 <label for="exampleEmail" class="">ที่อยู่<span class="text-danger">*</span></label>
-                                                <textarea name="address_mem" style="height:120px" class="form-control">{{ old('address_mem') }}</textarea>
+                                                <textarea name="address_mem" style="height:120px" class="form-control">{{$objs->address_mem}}</textarea>
                                               </div>
 
                                               <div class="position-relative form-group ">
                                                 <label for="exampleEmail" class="">จังหวัด<span class="text-danger">*</span></label>
                                                 <select id="province" name="province_mem" class="form-control">
-                                                  <option value="">- กรุณาเลือกจังหวัด -</option>
+                                                  <option value="{{$objs->province_mem}}">{{$province->PROVINCE_NAME}}</option>
                                               </select>
                                               </div>
 
                                               <div class="position-relative form-group ">
                                                 <label for="exampleEmail" class="">อำเภอ<span class="text-danger">*</span></label>
                                                 <select id="amphur" name="district_mem" class="form-control">
-                                                  <option value="">- กรุณาเลือกอำเภอ -</option>
+                                                  <option value="{{$objs->district_mem}}">{{$objs->district_mem}}</option>
                                               </select>
                                               </div>
 
                                               <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสไปรษณีย์<span class="text-danger">*</span></label>
-                                                <input id="postcode" name="zip_code_mem" placeholder="10310" type="text" class="form-control">
+                                                <input id="postcode" name="zip_code_mem" value="{{$objs->zip_code_mem}}" placeholder="10310" type="text" class="form-control">
                                               </div>
 
                                             </div>
@@ -144,23 +149,23 @@
                                               <h5 class="card-title">ประเภทสมาชิก</h5>
                                                   <div class="row">
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่เริ่มต้น<span class="text-danger">*</span></label>
-                                                    <input type="text" name="start_at" class="form-control" value="{{ old('start_at') }}" data-toggle="datepicker">
+                                                    <input type="text" name="start_at" class="form-control" value="{{ $objs->start_at }}" data-toggle="datepicker">
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่สิ้นสุด<span class="text-danger">*</span></label>
-                                                    <input type="text" name="end_at" class="form-control" value="{{ old('end_at') }}" data-toggle="datepicker">
+                                                    <input type="text" name="end_at" class="form-control" value="{{ $objs->end_at }}" data-toggle="datepicker">
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ประเภทสมาชิก<span class="text-danger">*</span></label>
                                                     <select name="type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('type_mem') == 1)
+                                                      <option value="1" @if($objs->type_mem == 1)
                                     selected='selected'
                                     @endif>รายวัน</option>
-                                                      <option value="2" @if(old('type_mem') == 2)
+                                                      <option value="2" @if($objs->type_mem == 2)
                                     selected='selected'
                                     @endif>รายเดือน</option>
-                                                      <option value="3" @if(old('type_mem') == 3)
+                                                      <option value="3" @if($objs->type_mem == 3)
                                     selected='selected'
                                     @endif>รายปี</option>
                                                   </select>
@@ -169,10 +174,10 @@
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ช่องทางการชำระเงิน<span class="text-danger">*</span></label>
                                                     <select name="pay_type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('pay_type_mem') == 1)
+                                                      <option value="1" @if($objs->pay_type_mem == 1)
                                     selected='selected'
                                     @endif>เงินสด</option>
-                                                      <option value="2" @if(old('pay_type_mem') == 2)
+                                                      <option value="2" @if($objs->pay_type_mem == 2)
                                     selected='selected'
                                     @endif>ผ่อนชำระ</option>
 
@@ -181,10 +186,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="amount_mem" placeholder="1500" value="{{ old('amount_mem') }}" type="text" class="form-control">
+                                                    <input name="amount_mem" placeholder="1500" value="{{$objs->amount_mem}}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="re_amount_mem" placeholder="00" value="{{ old('re_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="re_amount_mem" placeholder="00" value="{{$objs->re_amount_mem}}" type="text" class="form-control">
                                                   </div>
 
 
@@ -194,7 +199,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="remark_mem" style="height:150px" class="form-control">{{ old('remark_mem') }}</textarea>
+                                                  <textarea name="remark_mem" style="height:150px" class="form-control">{{$objs->remark_mem}}</textarea>
                                                 </div>
                                             </div>
 
@@ -211,7 +216,7 @@
                                                         <option> -- เลือก Trainer -- </option>
                                                         @if(isset($trainer))
                                                         @foreach($trainer as $u)
-                                                        <option value="{{$u->id}}" @if(old('pt_id') == $u->id)
+                                                        <option value="{{$u->id}}" @if($objs->pt_id == $u->id)
                                       selected='selected'
                                       @endif>{{$u->trainer_name}}</option>
                                                         @endforeach
@@ -220,20 +225,20 @@
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนชั่วโมง</label>
-                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{ old('pt_hr') }}" class="form-control">
+                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{$objs->pt_hr}}" class="form-control">
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่หมดอายุ</label>
-                                                      <input type="pt_end_at" class="form-control" value="{{ old('pt_end_at') }}" data-toggle="datepicker">
+                                                      <input name="pt_end_at" class="form-control" value="{{$objs->pt_end_at}}" data-toggle="datepicker">
                                                     </div>
 
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ช่องทางการชำระเงิน</label>
                                                     <select name="pt_pay_type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('pt_pay_type_mem') == 1)
+                                                      <option value="1" @if($objs->pt_pay_type_mem == 1)
                                     selected='selected'
                                     @endif>เงินสด</option>
-                                                      <option value="2" @if(old('pt_pay_type_mem') == 2)
+                                                      <option value="2" @if($objs->pt_pay_type_mem == 2)
                                     selected='selected'
                                     @endif>ผ่อนชำระ</option>
 
@@ -242,10 +247,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="pt_amount_mem" placeholder="1500" value="{{ old('pt_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="pt_amount_mem" placeholder="1500" value="{{$objs->pt_amount_mem}}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{ old('pt_re_amount_mem') }}" value="0" type="text" class="form-control">
+                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{$objs->pt_re_amount_mem}}" value="0" type="text" class="form-control">
                                                   </div>
 
 
@@ -255,7 +260,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control">{{ old('pt_remark_mem') }}</textarea>
+                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control">{{$objs->pt_remark_mem}}</textarea>
                                                 </div>
                                             </div>
 
@@ -332,8 +337,14 @@
           success: function(xmlDoc) {
             xml = $(xmlDoc);
 
+            _loadAmphur({{$objs->province_mem}});
+            _loadDistrict({{$objs->district_mem}});
+
             _loadProvince();
             addEventList();
+            $("#amphur").val('{{$objs->district_mem}}');
+
+              $("#postcode").val('{{$objs->zip_code_mem}}');
           },
           error: function() {
             console.log("Failed to get xml");

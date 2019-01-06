@@ -20,8 +20,8 @@ class CreateMembersTable extends Migration
             $table->string('last_name_mem');
             $table->string('birthday_mem');
             $table->integer('sex_mem');
-            $table->integer('height_mem');
-            $table->integer('width_mem');
+            $table->integer('height_mem')->default('0');
+            $table->integer('width_mem')->default('0');
             $table->string('phone_mem');
             $table->string('email_mem')->nullable();
             $table->string('line_mem')->nullable();
