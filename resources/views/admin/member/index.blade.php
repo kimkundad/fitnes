@@ -122,15 +122,12 @@
                                       ชม.
                                     </td>
                                     <td>
-                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-alternate btn-sm" href="{{url('admin/member/'.$u->id)}}" style="color: #fff;float: left;"><i class="lnr-license btn-icon-wrapper"> </i></a>
-                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-primary btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="color: #fff;float: left;"><i class="pe-7s-tools btn-icon-wrapper"> </i></a>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="#" style="float: left;"><b><i class="pe-7s-file btn-icon-wrapper"> </i> ดูประวัติ</b></a>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
+                                      <button class="mb-2 mr-2 btn-pill btn btn-secondary">ต่ออายุสมาชิก
+                                            </button>
 
 
-                                      <form  action="{{url('admin/member/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
-                                          <input type="hidden" name="_method" value="DELETE">
-                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                          <button type="submit" class="mb-2 mr-2 btn-icon btn-icon-only btn btn-warning btn-sm" style="color: #fff;"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                      </form>
 
                                     </td>
                                   </tr>

@@ -70,13 +70,13 @@
                                     <td>{{$u->course_price}}</td>
                                     <td></td>
                                     <td>
-                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-primary" href="{{url('admin/course/'.$u->idc.'/edit')}}" style="color: #fff;float: left;"><i class="pe-7s-tools btn-icon-wrapper"> </i></a>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" href="{{url('admin/course/'.$u->idc.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
 
 
                                       <form  action="{{url('admin/course/'.$u->idc)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                                           <input type="hidden" name="_method" value="DELETE">
                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                          <button type="submit" class="mb-2 mr-2 btn-icon btn-icon-only btn btn-warning" style="color: #fff;"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                                          <button type="submit" class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" ><b><i class="pe-7s-trash btn-icon-wrapper"> </i> ลบ</b></button>
                                       </form>
                                     </td>
 
