@@ -24,12 +24,18 @@
 
 
                             <div class="page-title-actions">
-                              <a href="{{url('admin/member/create')}}"  class="btn-shadow btn btn-info">
+                              <a href="{{url('admin/member/'.$objs->id)}}"   class="btn-shadow btn btn-info">
                                   <span class="btn-icon-wrapper pr-2 opacity-7">
-                                      <i class="icon ion-android-add"></i>
+                                      <i class="lnr-user btn-icon-wrapper"></i>
                                   </span>
-                                  สมัครสมาชิก
+                                  รูปบัตรสมาชิก
                               </a>
+                              <br /><br />
+                              <form  action="{{url('admin/member/'.$objs->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+                                  <input type="hidden" name="_method" value="DELETE">
+                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                  <button type="submit" class="mb-2 mr-2 btn-icon btn btn-danger"><b><i class="pe-7s-trash btn-icon-wrapper"> </i> ลบสมาชิก</b></button>
+                              </form>
 
                             </div>
 
@@ -282,7 +288,7 @@
                                             </div>
                                         </div> -->
                                         <div class="col-md-12 text-center">
-                                        <button class="mt-2 btn btn-primary" type="submit">สมัครสมาชิก</button>
+                                        <button class="mt-2 btn btn-primary" type="submit">อัพเดทข้อมูล</button>
                                         </div>
                                     </form>
                                 </div>

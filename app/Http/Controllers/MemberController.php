@@ -301,5 +301,9 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+
+      $obj = member::find($id);
+      $obj->delete();
+      return redirect(url('admin/member/'))->with('del_product','คุณทำการลบอสังหา สำเร็จ');
     }
 }

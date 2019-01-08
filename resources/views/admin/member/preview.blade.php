@@ -82,6 +82,8 @@
                                   </div>
                                 </div>
                                 <br />
+                                <a class="colormycanvas mb-2 mr-2 btn-pill btn btn-secondary" href="{{url('admin/member')}}">เสร็จสิ้น
+                                </a>
                                 <button class="colormycanvas mb-2 mr-2 btn-pill btn btn-secondary" id="colormycanvas">DOWNLOAD
                                             </button>
                               </div>
