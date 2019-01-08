@@ -46,7 +46,7 @@
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
 
-                                <ul class="mm-show"> 
+                                <ul class="mm-show">
                                   <li>
                                       <a href="{{url('admin/member')}}" {{ (Request::is('admin/member') ? 'class=mm-active' : '') }} {{ (Request::is('admin/preview/*') ? 'class=mm-active' : '') }} {{ (Request::is('admin/member/1/edit*') ? 'class=mm-active' : '') }}>
                                           <i class="metismenu-icon">
@@ -112,7 +112,7 @@
                                 </a>
                             </li>
                             <li >
-                                <a href="{{url('admin/course')}}" {{ (Request::is('admin/course*') ? 'class=mm-active' : '') }} >
+                                <a href="{{url('admin/course')}}" {{ (Request::is('admin/course*') ? 'class=mm-active' : '') }} {{ (Request::is('edit_c_t*') ? 'class=mm-active' : '') }}  >
                                     <i class="metismenu-icon pe-7s-plugin">
                                     </i>Class เรียน
                                 </a>

@@ -17,8 +17,10 @@ class CreateClasstablesTable extends Migration
             $table->increments('id');
             $table->string('title_event');
             $table->integer('class_id');
+            $table->integer('t_id')->nullable();
             $table->string('color_event');
             $table->dateTime('start_event');
+            $table->dateTime('end_event');
             $table->timestamps();
         });
     }

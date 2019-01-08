@@ -37,6 +37,12 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/table_course/create', 'Course_tableController@create');
   Route::post('admin/table_course/add_class', 'Course_tableController@post_class');
   Route::get('get_event', 'Course_tableController@get_event');
+  Route::get('get_event_c/{id}', 'Course_tableController@get_event_c');
+  Route::post('post_class_in', 'Course_tableController@post_class_in');
+  Route::post('admin/del_class_t', 'Course_tableController@del_class_t');
+
+  Route::get('edit_c_t/{id}', 'CourseController@edit_c_t');
+  Route::post('edit_c_t_post', 'Course_tableController@edit_c_t_post');
 
 
 });

@@ -57,7 +57,7 @@
                               <div class="card-body">
                                 <h5 class="card-title">ผลการค้นหา</h5>
 
-                              <table style="width: 100%;"  class="table table-hover table-striped ">
+                              <table style="width: 100%;" id="example" class="table table-hover table-striped ">
                                 <thead>
                                 <tr>
                                     <th>หมายเลข</th>

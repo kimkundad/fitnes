@@ -79,9 +79,27 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit_c_t($id)
     {
+
+      $classtables = DB::table('classtables')->select(
+            'classtables.*'
+            )
+            ->where('id', $id)
+            ->first();
         //
+        $course = course::all();
+        $data['course'] = $course;
+
+        $trainer = DB::table('trainers')->select(
+              'trainers.*'
+              )
+              ->get();
+
+        $data['trainer'] = $trainer;
+        $data['classtables'] = $classtables;
+
+        return view('admin.course.edit_c_t', $data);
     }
 
     /**
@@ -92,6 +110,24 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
+
+      $get_class = DB::table('classtables')->select(
+            'classtables.*',
+            'classtables.id as idc',
+            'trainers.*'
+            )
+            ->leftjoin('trainers', 'trainers.id',  'classtables.t_id')
+            ->where('classtables.class_id', $id)
+            ->get();
+
+
+      $data['get_class'] = $get_class;
+      $trainer = DB::table('trainers')->select(
+            'trainers.*'
+            )
+            ->get();
+
+      $data['trainer'] = $trainer;
         //
         $category = category::all();
         $data['category'] = $category;
@@ -139,6 +175,13 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('classtables')->select(
+              'classtables.*'
+              )
+              ->where('class_id', $id)
+              ->delete();
+
+
         $obj = course::find($id);
         $obj->delete();
         return redirect(url('admin/course/'))->with('delete','คุณทำการลบอสังหา สำเร็จ');

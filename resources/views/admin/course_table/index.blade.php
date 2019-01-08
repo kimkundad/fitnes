@@ -42,7 +42,26 @@
 
 
                               <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
-                                  <li class="nav-item">
+
+                                <li class="nav-item">
+                                        <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
+                                            <span>All</span>
+                                        </a>
+                                    </li>
+
+                              @if($course)
+                              @foreach($course as $u)
+
+                              <li class="nav-item">
+                                  <a role="tab" class="nav-link" id="tab-{{$s}}" data-toggle="tab" href="#tab-content-{{$s}}">
+                                      <span>{{$u->course_name}}</span>
+                                  </a>
+                              </li>
+                              <?php $s++; ?>
+                              @endforeach
+                              @endif
+
+                              <!--    <li class="nav-item">
                                       <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
                                           <span>All</span>
                                       </a>
@@ -56,7 +75,8 @@
                                       <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
                                           <span>Kick Boxing</span>
                                       </a>
-                                  </li>
+                                  </li> -->
+
                               </ul>
 
 
@@ -64,24 +84,23 @@
                                   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
                                       <div class="main-card mb-3 card">
                                           <div class="card-body">
-                                              <div id='calendar1'></div>
+                                              <div id='calendar0'></div>
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
+                                  @if($course)
+                                  @foreach($course as $u)
+                                  <div class="tab-pane tabs-animation fade" id="tab-content-{{$j}}" role="tabpanel">
                                       <div class="main-card mb-3 card">
                                           <div class="card-body">
-                                              <div id='calendar-list'></div>
+                                              <div id='calendar{{$j}}'></div>
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
-                                      <div class="main-card mb-3 card">
-                                          <div class="card-body">
-                                              <div id="calendar-bg-events"></div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                  <?php $j++; ?>
+                                  @endforeach
+                                  @endif
+
                               </div>
 
 
@@ -108,7 +127,8 @@
 <script>
 
 $(document).ready(function () {
-    $('#calendar1').fullCalendar({
+
+    $('#calendar0').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -123,6 +143,30 @@ $(document).ready(function () {
         eventLimit:true,
         lang: 'th'
     });
+
+    @if($course)
+    @foreach($course as $u)
+
+    $('#calendar{{$k}}').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay',
+        },
+        events: {
+            url: '{{url('get_event_c/'.$u->id)}}',
+            error: function() {
+
+            }
+        },
+        eventLimit:true,
+        lang: 'th'
+    });
+    <?php $k++; ?>
+    @endforeach
+    @endif
+
+
 });
 
 </script>

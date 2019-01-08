@@ -62,7 +62,7 @@
                                 <tr>
                                     <td>{{$s}}</td>
                                     <td>{{$u->name_cat}}</td>
-                                    <td></td>
+                                    <td>{{$u->get_count}}</td>
                                     <td></td>
                                     <td>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" href="{{url('admin/category/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>

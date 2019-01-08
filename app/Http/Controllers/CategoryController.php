@@ -21,6 +21,17 @@ class CategoryController extends Controller
             )
             ->get();
 
+            foreach($cat as $u){
+
+              $count = DB::table('courses')->select(
+                    'courses.*'
+                    )
+                    ->where('cat_id',  $u->id)
+                    ->count();
+
+                    $u->get_count = $count;
+            }
+
         //
         $s = 1;
         $data['s'] = $s;

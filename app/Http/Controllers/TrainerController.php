@@ -187,6 +187,19 @@ class TrainerController extends Controller
      */
     public function destroy($id)
     {
+      $objs = DB::table('trainers')
+          ->select(
+             'trainers.*'
+             )
+          ->where('id', $id)
+          ->first();
+
+      $file_path = 'assets/images/avatars/'.$objs->trainer_image;
+      unlink($file_path);
+
         //
+        $obj = trainer::find($id);
+        $obj->delete();
+        return redirect(url('admin/trainer/'))->with('del_product','คุณทำการลบอสังหา สำเร็จ');
     }
 }

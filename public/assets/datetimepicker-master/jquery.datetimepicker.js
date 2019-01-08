@@ -728,7 +728,8 @@ var datetimepickerFactory = function ($) {
 	}
 
 	var isFormatStandard = function(format){
-		return Object.values(standardFormats).indexOf(format) === -1 ? false : true;
+		return $.map(standardFormats, function (val) { return val })
+			.indexOf(format) === -1 ? false : true;
 	}
 
 	$.extend($.datetimepicker, standardFormats);
@@ -2370,7 +2371,7 @@ var datetimepickerFactory = function ($) {
 						setCaretPos(input[0], 0);
 					}
 
-					input.on('paste.xdsoft', function (event) {
+					input.off('paste.xdsoft').on('paste.xdsoft', function (event) {
 					    // couple options here
 					    // 1. return false - tell them they can't paste
 					    // 2. insert over current characters - minimal validation
@@ -2388,7 +2389,8 @@ var datetimepickerFactory = function ($) {
 					    var valueBeforeCursor = val.substr(0, pos);
 					    var valueAfterPaste = val.substr(pos + pastedData.length);
 
-					    val = valueBeforeCursor + pastedData + valueAfterPaste;           
+					    val = valueBeforeCursor + pastedData + valueAfterPaste;   
+				            val = val.substring(0, options.mask.length)
 					    pos += pastedData.length;
 
 					    if (isValidValue(options.mask, val)) {

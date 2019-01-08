@@ -184,14 +184,14 @@
                                         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
                                             <div class="main-card mb-3 card">
                                                 <div class="card-body">
-                                                    <div id='calendar'></div>
+                                                    <div id='calendar0'></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
                                             <div class="main-card mb-3 card">
                                                 <div class="card-body">
-                                                    <div id='calendar-list'></div>
+                                                    <div class="calendar_t" id='calendar_t'></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -432,6 +432,54 @@
 
 @section('scripts')
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/lib/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/fullcalendar.min.js')}}"></script>
+<script type="text/javascript" src="{{url('assets/fullcalendar/locale/th.js')}}"></script>
 
+<script>
+
+$(document).ready(function () {
+
+
+  $('#calendar0').fullCalendar({
+      header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay',
+      },
+      events: {
+          url: '{{url('get_event')}}',
+          error: function() {
+
+          }
+      },
+      eventLimit:true,
+      lang: 'th'
+  });
+
+
+    $('#calendar_t').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay',
+        },
+        events: {
+            url: '{{url('get_event')}}',
+            error: function() {
+
+            }
+        },
+        eventLimit:true,
+        lang: 'th'
+    });
+
+
+
+
+});
+
+</script>
 
 @stop('scripts')
