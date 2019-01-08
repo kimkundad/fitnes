@@ -67,6 +67,8 @@ class MemberController extends Controller
          'end_at' => 'required',
          'type_mem' => 'required',
          'pay_type_mem' => 'required',
+         'address_mem' => 'required',
+         'province_mem' => 'required',
          'amount_mem' => 'required'
         ]);
 
