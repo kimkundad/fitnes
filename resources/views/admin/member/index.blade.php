@@ -182,8 +182,12 @@
                                       #{{$u->no_mem}}
                                     </td>
                                     <td>
-                                      <button class="mb-2 mr-2 btn btn-success btn-sm"><?php echo DateThai($u->end_at); ?>
-                                            </button>
+                                      @if(date("Y-m-d") >= $u->end_at)
+                                      <button class="mb-2 mr-2 btn btn-danger btn-sm"><?php echo DateThai($u->end_at); ?></button>
+                                      @else
+                                      <button class="mb-2 mr-2 btn btn-success btn-sm"><?php echo DateThai($u->end_at); ?></button>
+                                      @endif
+
                                     </td>
                                     <td>
                                       <div class="widget-content p-0">
