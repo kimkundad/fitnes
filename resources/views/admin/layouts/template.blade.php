@@ -15,7 +15,7 @@
     @include('admin.layouts.inc-stylesheet')
     @yield('admin.stylesheet')
 </head>
-<body class="modal-open">
+<body >
 
 
 
