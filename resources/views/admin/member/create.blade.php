@@ -144,7 +144,7 @@
                                               <h5 class="card-title">ประเภทสมาชิก</h5>
                                                   <div class="row">
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่เริ่มต้น<span class="text-danger">*</span></label>
-                                                    <input type="text" name="start_at" class="form-control" value="{{ old('start_at') }}" data-toggle="datepicker">
+                                                    <input type="text" name="start_at" class="form-control datepicker" value="{{ old('start_at') }}" >
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่สิ้นสุด<span class="text-danger">*</span></label>
@@ -300,6 +300,20 @@
 
 @section('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <link href="{{url('assets/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
+    <script src="{{url('assets/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js')}}"></script>
+    <script src="{{url('assets/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js')}}" charset="UTF-8"></script>
+<script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayBtn: true,
+                language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+                thaiyear: true              //Set เป็นปี พ.ศ.
+            }).datepicker("setDate", "0");  //กำหนดเป็นวันปัจุบัน
+        });
+    </script>
 
 <script>
 
