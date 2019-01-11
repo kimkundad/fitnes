@@ -84,6 +84,7 @@ class DashboardController extends Controller
 
      $get_data_meme = DB::table('members')
            ->where('no_mem', $search)
+           ->orWhere('first_name_mem', 'LIKE', "%$search%")
            ->get();
      //////////////////////////////////////////
 
@@ -92,6 +93,7 @@ class DashboardController extends Controller
            'members.*'
            )
            ->where('no_mem', $search)
+           ->orWhere('first_name_mem', 'LIKE', "%$search%")
            ->count();
 
 
