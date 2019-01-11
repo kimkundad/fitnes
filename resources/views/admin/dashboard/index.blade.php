@@ -342,7 +342,7 @@
 
                                   <div class="main-card card">
                                   <div class="card-body">
-                                    <h5 class="card-title">สมาชิกล่าสุด</h5>
+                                    <h5 class="card-title">สมาชิกล่าสุด <div class="badge badge-warning mr-2">{{$get_data_expire1}}</div></h5>
 
 
                                     <table style="width: 100%;"  class="table table-hover table-striped ">
