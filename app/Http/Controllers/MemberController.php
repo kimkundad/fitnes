@@ -130,6 +130,7 @@ class MemberController extends Controller
 
         $get_data = DB::table('members')
               ->where('no_mem', 'like', "%$search%")
+              ->orWhere('first_name_mem', 'LIKE', "%$search%")
               ->get();
         //////////////////////////////////////////
         $get_data_expire = 0;
@@ -151,6 +152,7 @@ class MemberController extends Controller
               'members.*'
               )
               ->where('no_mem', 'like', "%$search%")
+              ->orWhere('first_name_mem', 'LIKE', "%$search%")
               ->count();
         //////////////////////////////////////////
 
