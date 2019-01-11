@@ -251,7 +251,7 @@ class MemberController extends Controller
 
         $the_id = $package->id;
           //$no_mem = 'GT'.$the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
-          $randomSixDigitInt = \random_int(100000, 999999);
+          $randomSixDigitInt = \random_int(100000000, 999999999);
           $package = member::find($the_id);
           $package->no_mem = $randomSixDigitInt;
           $package->save();
@@ -324,7 +324,7 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $randomSixDigitInt = \random_int(100000, 999999);
+        $randomSixDigitInt = \random_int(100000000, 999999999);
         $image = $request->file('image');
 
         $this->validate($request, [
