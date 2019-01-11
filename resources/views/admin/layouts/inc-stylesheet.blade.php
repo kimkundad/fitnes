@@ -8,4 +8,10 @@
 .app-theme-gray .app-page-title {
     background: rgba(255,255,255,0.45);
 }
+.app-header__logo .logo-src {
+    height: 37px;
+    width: 155px;
+
+}
+
 </style>

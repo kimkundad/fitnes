@@ -16,7 +16,12 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="{{ url('main.b4e6647d7c747f30c87e.css') }}" rel="stylesheet"></head>
-
+    <style>
+    .app-logo {
+      height: 37px;
+      width: 155px;
+    }
+    </style>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow">
             <div class="app-container">
