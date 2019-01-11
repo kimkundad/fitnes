@@ -422,7 +422,7 @@ class MemberController extends Controller
 
         }
 
-        return redirect(url('admin/member/'.$id.'/edit'))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
+        return redirect(url('admin/member/'))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
 
     }
 
