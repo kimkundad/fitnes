@@ -20,14 +20,49 @@ class MemberController extends Controller
     {
         //
 
+        $get_data = DB::table('members')
+              ->get();
+        $get_data_expire = 0;
+        $get_data_expire1 = 0;
+        $get_date = date("Y-m-d");
+        foreach($get_data as $u){
+
+          $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+          $data_2 = ($get_date2/86400);
+          if($data_2 < 30 && $data_2 > 0){
+            $get_data_expire++;
+          }
+          if($data_2 < 0){
+            $get_data_expire1++;
+          }
+        }
+
+
+        $get_count = DB::table('members')->select(
+              'members.*'
+              )
+              ->count();
+
+
+
+
+        //dd($get_date2/86400);
+        //86400
+
+
         $trainer = member::all();
 
         $s = 1;
         $data['s'] = $s;
+        $data['get_data_expire1'] = $get_data_expire1;
+        $data['get_data_expire'] = $get_data_expire;
+        $data['get_count'] = $get_count;
         $data['objs'] = $trainer;
         $data['datahead'] = "รายชื่อสมาชิก GT Fitnes";
         return view('admin.member.index', $data);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +86,98 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function search_mem(Request $request)
+     {
+
+       $this->validate($request, [
+        'search' => 'required'
+      ]);
+      $search = $request->get('search');
+
+      //dd($search);
+      if($search == 1 || $search == 2 || $search == 3){
+
+        $get_data = DB::table('members')
+              ->where('type_mem', $search)
+              ->get();
+        //////////////////////////////////////////
+        $get_data_expire = 0;
+        $get_data_expire1 = 0;
+        $get_date = date("Y-m-d");
+        foreach($get_data as $u){
+
+          $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+          $data_2 = ($get_date2/86400);
+          if($data_2 < 30 && $data_2 > 0){
+            $get_data_expire++;
+          }
+          if($data_2 < 0){
+            $get_data_expire1++;
+          }
+        }
+        //////////////////////////////////////////
+        $get_count = DB::table('members')->select(
+              'members.*'
+              )
+              ->where('type_mem', $search)
+              ->count();
+        //////////////////////////////////////////
+        $search1 = $search;
+        $search = null;
+      }else{
+
+
+        $get_data = DB::table('members')
+              ->where('no_mem', 'like', "%$search%")
+              ->get();
+        //////////////////////////////////////////
+        $get_data_expire = 0;
+        $get_data_expire1 = 0;
+        $get_date = date("Y-m-d");
+        foreach($get_data as $u){
+
+          $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+          $data_2 = ($get_date2/86400);
+          if($data_2 < 30 && $data_2 > 0){
+            $get_data_expire++;
+          }
+          if($data_2 < 0){
+            $get_data_expire1++;
+          }
+        }
+        //////////////////////////////////////////
+        $get_count = DB::table('members')->select(
+              'members.*'
+              )
+              ->where('no_mem', 'like', "%$search%")
+              ->count();
+        //////////////////////////////////////////
+
+
+        $search1 = 0;
+      }
+
+
+
+
+
+      $s = 1;
+      $data['s'] = $s;
+      $data['get_data_expire1'] = $get_data_expire1;
+      $data['get_data_expire'] = $get_data_expire;
+      $data['get_count'] = $get_count;
+      $data['search'] = $search;
+      $data['search1'] = $search1;
+      $data['objs'] = $get_data;
+      $data['datahead'] = "รายชื่อสมาชิก GT Fitnes";
+      return view('admin.member.search', $data);
+
+     }
+
+
+
+
     public function store(Request $request)
     {
         //

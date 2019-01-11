@@ -15,7 +15,7 @@
     @include('admin.layouts.inc-stylesheet')
     @yield('admin.stylesheet')
 </head>
-<body>
+<body class="modal-open">
 
 
 
@@ -48,6 +48,7 @@
 <!-- jQuery -->
 @include('admin.layouts.inc-scripts')
 @yield('scripts')
+
 
 
 </body>

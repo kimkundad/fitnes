@@ -53,13 +53,11 @@
                             <div class="col-md-4">
                               <br />
                               <div class="search-wrapper active" style="margin-top:5px;">
-                                <form class="" method="POST" action="{{url('search_mem')}}" enctype="multipart/form-data" novalidate="novalidate">
-                                {{ csrf_field() }}
                                   <div class="input-holder">
-                                      <input type="text" class="search-input" name="search" placeholder="Search">
-                                      <button class="search-icon" type="submit"><span></span></button>
+                                      <input type="text" class="search-input" value="{{$search}}" placeholder="Search">
+                                      <button class="search-icon"><span></span></button>
                                   </div>
-                                  </form>
+
                               </div>
 
                             </div>
@@ -71,9 +69,19 @@
                                 <label for="exampleEmail" class="">เลือกดูตามประเภทสมาชิก</label>
                                 <select name="search" id="exampleSelect" onchange="onSelectChange();" class="form-control">
                                   <option> เลือกระเภทสมาชิก </option>
-                                  <option value="1"> รายวัน </option>
-                                  <option value="2"> รายเดือน </option>
-                                  <option value="3"> รายปี </option>
+                                  <option value="1"
+                                    @if($search1 == 1)
+                                    selected='selected'
+                                    @endif
+                                    > รายวัน </option>
+                                  <option value="2" @if($search1 == 2)
+                                  selected='selected'
+                                  @endif
+                                  > รายเดือน </option>
+                                  <option value="3" @if($search1 == 3)
+                                  selected='selected'
+                                  @endif
+                                  > รายปี </option>
                               </select>
 
                               </form>
@@ -269,5 +277,6 @@ function onSelectChange(){
  document.getElementById('frm').submit();
 }
 </script>
+
 
 @stop('scripts')

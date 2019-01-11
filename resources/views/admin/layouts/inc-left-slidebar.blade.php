@@ -33,7 +33,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Menu</li>
                             <li>
-                                <a href="{{url('admin/dashboard')}}" {{ (Request::is('admin/dashboard*') ? 'class=mm-active' : '') }}>
+                                <a href="{{url('admin/dashboard')}}" {{ (Request::is('admin/dashboard*') ? 'class=mm-active' : '') }} {{ (Request::is('search_mem_dash') ? 'class=mm-active' : '') }} >
                                     <i class="metismenu-icon pe-7s-airplay">
                                     </i>Dashboard / สรุป
                                 </a>
@@ -48,7 +48,7 @@
 
                                 <ul class="mm-show">
                                   <li>
-                                      <a href="{{url('admin/member')}}" {{ (Request::is('admin/member') ? 'class=mm-active' : '') }} {{ (Request::is('admin/preview/*') ? 'class=mm-active' : '') }} {{ (Request::is('admin/member/1/edit*') ? 'class=mm-active' : '') }}>
+                                      <a href="{{url('admin/member')}}" {{ (Request::is('search_mem') ? 'class=mm-active' : '') }} {{ (Request::is('admin/member') ? 'class=mm-active' : '') }} {{ (Request::is('admin/preview/*') ? 'class=mm-active' : '') }} {{ (Request::is('admin/member/1/edit*') ? 'class=mm-active' : '') }}>
                                           <i class="metismenu-icon">
                                           </i>รายชื่อสมาชิก
                                       </a>

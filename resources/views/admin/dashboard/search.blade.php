@@ -24,7 +24,7 @@
                                   {{ csrf_field() }}
 
                                     <div class="input-holder">
-                                        <input type="text" class="search-input" name="search" placeholder="ค้นหาสมาชิกเพื่อ Check In">
+                                        <input type="text" class="search-input" name="search" value="{{$search}}" placeholder="ค้นหาสมาชิกเพื่อ Check In">
                                         <button class="search-icon" type="submit"><span></span></button>
                                     </div>
                                     </form>
@@ -53,7 +53,7 @@
                             <div class="col-lg-12 ">
 
 
-                            <!--  <div class="main-card card">
+                              <div class="main-card card">
                               <div class="card-body">
                                 <h5 class="card-title">ผลการค้นหา</h5>
 
@@ -76,13 +76,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                  <tr>
+                                  @if(isset($get_data_meme))
+                                  @foreach($get_data_meme as $u)
+                                  <tr id="{{$u->id}} ">
                                     <td>
-                                      #142-210-6254
+                                      #{{$u->no_mem}}
                                     </td>
                                     <td>
-                                      <button class="mb-2 mr-2 btn btn-success btn-sm">12 มค. 62
+                                      <button class="mb-2 mr-2 btn btn-success btn-sm">{{$u->start_at}}
                                             </button>
                                     </td>
                                     <td>
@@ -90,65 +91,43 @@
                                                         <div class="widget-content-wrapper">
                                                             <div class="widget-content-left mr-3">
                                                                 <div class="widget-content-left">
-                                                                    <img width="40" class="rounded-circle" src="{{url('assets/images/avatars/1.jpg')}}" alt="">
+                                                                    <img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt="">
                                                                 </div>
                                                             </div>
                                                             <div class="widget-content-left flex2">
-                                                                <div class="widget-heading">Alina Mclourd</div>
-
+                                                                <div class="widget-heading">{{$u->first_name_mem}} {{$u->last_name_mem}}</div>
+                                                                <div class="widget-subheading">{{$u->phone_mem}}</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                     </td>
 
                                     <td>
+                                      @if($u->type_mem == 1)
                                       รายวัน
+                                      @elseif($u->type_mem == 2)
+                                      รายเดือน
+                                      @else
+                                      รายปี
+                                      @endif
                                     </td>
                                     <td>
-                                      25 ชม.
+                                      @if($u->pt_hr == null)
+                                      0
+                                      @else
+                                      {{$u->pt_hr}}
+                                      @endif
+                                      ชม.
                                     </td>
                                     <td>
-                                      <button class="mb-2 mr-2 btn-pill btn btn-primary">ฟิตเนส</button>
-                                      <button class="mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary">เทรนเนอร์</button>
-                                      <button class="mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary">คลาส</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="101">ฟิตเนส</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="102">เทรนเนอร์</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="103">คลาส</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="104">ว่ายน้ำ</button>
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td>
-                                      #142-210-6254
-                                    </td>
-                                    <td>
-                                      <button class="mb-2 mr-2 btn btn-success btn-sm">12 มค. 62
-                                            </button>
-                                    </td>
-                                    <td>
-                                      <div class="widget-content p-0">
-                                                        <div class="widget-content-wrapper">
-                                                            <div class="widget-content-left mr-3">
-                                                                <div class="widget-content-left">
-                                                                    <img width="40" class="rounded-circle" src="{{url('assets/images/avatars/1.jpg')}}" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="widget-content-left flex2">
-                                                                <div class="widget-heading">Alina Mclourd</div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                    </td>
-
-                                    <td>
-                                      รายวัน
-                                    </td>
-                                    <td>
-                                      25 ชม.
-                                    </td>
-                                    <td>
-                                      <button class="mb-2 mr-2 btn-pill btn btn-primary">ฟิตเนส</button>
-                                      <button class="mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary">เทรนเนอร์</button>
-                                      <button class="mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary">คลาส</button>
-                                    </td>
-                                  </tr>
+                                  @endforeach
+                                  @endif
 
                                 </tbody>
 
@@ -160,10 +139,13 @@
 
 
 
+
+
+
                               </div>
                               </div>
 
--->
+
 
 
 
@@ -497,6 +479,38 @@ $(document).ready(function () {
 
 });
 
+</script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn-f").click(function(e){
+    var abc = $(this).attr('data-id');
+    console.log(abc);
+       e.preventDefault();
+    var user_id = $(this).closest('tr').attr('id');
+
+    $.ajax({
+            type:'POST',
+            url:'{{url('api/api_tech_status')}}',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            data: { "user_id" : user_id, "data_id" : abc},
+            success: function(data){
+              if(data.data.success == 1001){
+
+
+                swal("สำเร็จ!", "ได้ทำการ Check In สำเร็จ!", "success");
+
+
+
+              }else{
+                swal("TP ของท่านหมด!", "กรุณาเติมเงินก่อนเข้าใช้บริการ!");
+              }
+            }
+        });
+    });
+});
 </script>
 
 @stop('scripts')
