@@ -250,9 +250,10 @@ class MemberController extends Controller
         $package->save();
 
         $the_id = $package->id;
-          $no_mem = 'GT'.$the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
+          //$no_mem = 'GT'.$the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
+          $randomSixDigitInt = \random_int(100000, 999999);
           $package = member::find($the_id);
-          $package->no_mem = $no_mem;
+          $package->no_mem = $randomSixDigitInt;
           $package->save();
 
 
@@ -323,7 +324,7 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
-
+        $randomSixDigitInt = \random_int(100000, 999999);
         $image = $request->file('image');
 
         $this->validate($request, [
@@ -343,6 +344,7 @@ class MemberController extends Controller
 
 
           $package = member::find($id);
+          $package->no_mem = $randomSixDigitInt;
           $package->pt_id = $request['pt_id'];
           $package->first_name_mem = $request['first_name_mem'];
           $package->last_name_mem = $request['last_name_mem'];
@@ -385,6 +387,7 @@ class MemberController extends Controller
         })->save('assets/images/avatar/'.$input['imagename']);
 
         $package = member::find($id);
+        $package->no_mem = $randomSixDigitInt;
         $package->pt_id = $request['pt_id'];
         $package->image_mem = $input['imagename'];
         $package->first_name_mem = $request['first_name_mem'];
