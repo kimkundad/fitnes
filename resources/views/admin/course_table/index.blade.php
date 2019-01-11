@@ -49,7 +49,7 @@
                                         </a>
                                     </li>
 
-                              @if($course)
+                              @if(isset($course))
                               @foreach($course as $u)
 
                               <li class="nav-item">
@@ -88,7 +88,7 @@
                                           </div>
                                       </div>
                                   </div>
-                                  @if($course)
+                                  @if(isset($course))
                                   @foreach($course as $u)
                                   <div class="tab-pane tabs-animation fade" id="tab-content-{{$j}}" role="tabpanel">
                                       <div class="main-card mb-3 card">
@@ -144,7 +144,7 @@ $(document).ready(function () {
         lang: 'th'
     });
 
-    @if($course)
+    @if(isset($course))
     @foreach($course as $u)
 
     $('#calendar{{$k}}').fullCalendar({

@@ -70,7 +70,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">ผู้สอน</label>
-                                                  <select name="trainer_name" id="exampleSelect" class="form-control">
+                                                  <select name="t_id" id="exampleSelect" class="form-control">
                                                     <option value=""> -- เลือก ผู้สอน -- </option>
                                                     @if(isset($trainer))
                                                     @foreach($trainer as $u)
