@@ -79,7 +79,7 @@
                                                 <h5>ประเภทการเข้าใช้งาน</h5>
                                                   <div class="widget-content">
                                                     <div class="text-center">
-                                                        <canvas id="doughnut-chart-2"></canvas>
+                                                        <canvas id="myChart"></canvas>
                                                     </div>
                                                   </div>
                                               </div>
@@ -199,6 +199,35 @@
 
 @section('scripts')
 
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["ฟิตเนส","เทรนเนอร์","คลาส","ว่ายน้ำ"],
+        datasets: [{
+            label: '# of Votes',
+            data: [
+              @if(isset($get_array))
+              @foreach($get_array as $u)
+              {{$u}},
+              @endforeach
+              @endif
+            ],
+            backgroundColor:[window.chartColors.red,window.chartColors.orange,window.chartColors.yellow,window.chartColors.green,window.chartColors.blue],
+        }]
+    },
+    options: {
 
+      legend: {
+    display: false,
+      labels: {
+        display: false
+      }
+  }
+
+    }
+});
+</script>
 
 @stop('scripts')

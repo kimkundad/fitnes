@@ -278,6 +278,27 @@ class MemberController extends Controller
     public function report($id)
     {
 
+      $get_data_chart = DB::table('checkins')->select(
+            'checkins.*'
+            )
+            ->where('user_id', $id)
+            ->groupBy('time_type')
+            ->get();
+            $get_array = [];
+            $ran = array("ฟิตเนส","เทรนเนอร์","คลาส","ว่ายน้ำ");
+            foreach($ran as $u){
+
+              $get_count = DB::table('checkins')->select(
+                    'checkins.*'
+                    )
+                    ->where('user_id', $id)
+                    ->where('time_type', $u)
+                    ->count();
+              $get_array[] = $get_count;
+            }
+
+          //  dd($get_array);
+
       $get_data = DB::table('checkins')->select(
             'checkins.*'
             )
@@ -288,7 +309,9 @@ class MemberController extends Controller
         $s = 1;
         $data['s'] = $s;
         $data['objs'] = $objs;
+        $data['get_array'] = $get_array;
         $data['get_data'] = $get_data;
+        $data['get_data_chart'] = $get_data_chart;
         return view('admin.member.show', $data);
     }
 
