@@ -223,10 +223,9 @@
                                       ชม.
                                     </td>
                                     <td>
-                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="#" style="float: left;"><b><i class="pe-7s-file btn-icon-wrapper"> </i> ดูประวัติ</b></a>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/history')}}" style="float: left;"><b><i class="pe-7s-file btn-icon-wrapper"> </i> ดูประวัติ</b></a>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
-                                      <button class="mb-2 mr-2 btn-pill btn btn-secondary">ต่ออายุสมาชิก
-                                            </button>
+                                      <a class="mb-2 mr-2 btn-pill btn btn-secondary" href="#">ต่ออายุสมาชิก</a>
 
 
 

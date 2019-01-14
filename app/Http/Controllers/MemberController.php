@@ -275,6 +275,23 @@ class MemberController extends Controller
         return view('admin.member.preview', $data);
     }
 
+    public function report($id)
+    {
+
+      $get_data = DB::table('checkins')->select(
+            'checkins.*'
+            )
+            ->where('user_id', $id)
+            ->get();
+        //
+        $objs = member::find($id);
+        $s = 1;
+        $data['s'] = $s;
+        $data['objs'] = $objs;
+        $data['get_data'] = $get_data;
+        return view('admin.member.show', $data);
+    }
+
     public function preview($id)
     {
         //
