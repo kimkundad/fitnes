@@ -89,15 +89,17 @@
                                     <td>
                                       <div class="widget-content p-0">
                                                         <div class="widget-content-wrapper">
+
                                                             <div class="widget-content-left mr-3">
                                                                 <div class="widget-content-left">
-                                                                    <img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt="">
+                                                                    <a href="{{url('admin/member/'.$u->id.'/history')}}"><img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt=""></a>
                                                                 </div>
                                                             </div>
                                                             <div class="widget-content-left flex2">
-                                                                <div class="widget-heading">{{$u->first_name_mem}} {{$u->last_name_mem}}</div>
+                                                                <div class="widget-heading"><a href="{{url('admin/member/'.$u->id.'/history')}}">{{$u->first_name_mem}} {{$u->last_name_mem}}</a></div>
                                                                 <div class="widget-subheading">{{$u->phone_mem}}</div>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                     </td>

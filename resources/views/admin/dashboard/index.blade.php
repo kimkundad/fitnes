@@ -318,8 +318,8 @@
                                             {{$u->phone_mem}}
                                           </td>
                                           <td>
-                                            <button class="mb-2 mr-2 btn-pill btn btn-primary">ดูประวัติ</button>
 
+                                            <a class="mb-2 mr-2 btn-pill btn btn-primary" href="{{url('admin/member/'.$u->id.'/history')}}">ดูประวัติ</a>
                                           </td>
                                         </tr {{$a++}}>
                                         @endif
@@ -406,7 +406,7 @@
                                             {{$j->phone_mem}}
                                           </td>
                                           <td>
-                                            <button class="mb-2 mr-2 btn-pill btn btn-primary">ดูประวัติ</button>
+                                            <a class="mb-2 mr-2 btn-pill btn btn-primary" href="{{url('admin/member/'.$j->id.'/history')}}">ดูประวัติ</a>
 
                                           </td>
                                         </tr {{$b++}}>
