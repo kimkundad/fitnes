@@ -275,6 +275,53 @@ class MemberController extends Controller
         return view('admin.member.preview', $data);
     }
 
+    public function search_history(Request $request){
+
+      $user_id = $request['user_id'];
+      $select_type = $request['select_type'];
+
+      $get_data_chart = DB::table('checkins')->select(
+            'checkins.*'
+            )
+            ->where('user_id', $user_id)
+            ->groupBy('time_type')
+            ->get();
+            $get_array = [];
+            $ran = array("ฟิตเนส","เทรนเนอร์","คลาส","ว่ายน้ำ");
+            foreach($ran as $u){
+
+              $get_count = DB::table('checkins')->select(
+                    'checkins.*'
+                    )
+                    ->where('user_id', $user_id)
+                    ->where('time_type', $u)
+                    ->count();
+              $get_array[] = $get_count;
+            }
+
+          //  dd($get_array);
+
+      $get_data = DB::table('checkins')->select(
+            'checkins.*'
+            )
+            ->where('user_id', $user_id)
+            ->where('time_type', $select_type)
+            ->get();
+
+          //  dd($select_type);
+        //
+        $objs = member::find($user_id);
+        $s = 1;
+        $data['s'] = $s;
+        $data['objs'] = $objs;
+        $data['select_type'] = $select_type;
+        $data['get_array'] = $get_array;
+        $data['get_data'] = $get_data;
+        $data['get_data_chart'] = $get_data_chart;
+        return view('admin.member.search_his', $data);
+
+    }
+
     public function report($id)
     {
 

@@ -112,10 +112,18 @@
                                                         {{ csrf_field() }}
                                                       <select name="select_type" id="exampleSelect" onchange="onSelectChange();" class="form-control">
                                                         <option>เลือกรูปแบบ</option>
-                                                        <option value="ฟิตเนส" >ฟิตเนส</option>
-                                                        <option value="เทรนเนอร์" >เทรนเนอร์</option>
-                                                        <option value="คลาส" >คลาส</option>
-                                                        <option value="ว่ายน้ำ" >ว่ายน้ำ</option>
+                                                        <option value="ฟิตเนส" @if($select_type == 'ฟิตเนส')
+                                      selected='selected'
+                                      @endif>ฟิตเนส</option>
+                                                        <option value="เทรนเนอร์" @if($select_type == 'เทรนเนอร์')
+                                      selected='selected'
+                                      @endif>เทรนเนอร์</option>
+                                                        <option value="คลาส" @if($select_type == 'คลาส')
+                                      selected='selected'
+                                      @endif>คลาส</option>
+                                                        <option value="ว่ายน้ำ" @if($select_type == 'ว่ายน้ำ')
+                                      selected='selected'
+                                      @endif>ว่ายน้ำ</option>
                                                       </select>
                                                       </form>
                                                     </div>

@@ -48,4 +48,6 @@ Route::group(['middleware' => 'admin'], function() {
   Route::post('search_mem_dash', 'DashboardController@search_mem');
   Route::post('api/api_tech_status', 'DashboardController@api_tech_status');
 
+  Route::post('search_history', 'MemberController@search_history')->name('search_history');
+
 });
