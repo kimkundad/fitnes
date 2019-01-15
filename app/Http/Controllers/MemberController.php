@@ -436,7 +436,7 @@ class MemberController extends Controller
 
         if($l == 1){
           $get_l = '00'.$id;
-        }elseif($l == 1){
+        }elseif($l == 2){
           $get_l = '0'.$id;
         }else{
           $get_l = $id;
