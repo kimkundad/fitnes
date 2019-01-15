@@ -197,8 +197,7 @@ class MemberController extends Controller
          'type_mem' => 'required',
          'pay_type_mem' => 'required',
          'address_mem' => 'required',
-         'province_mem' => 'required',
-         'amount_mem' => 'required'
+         'province_mem' => 'required'
         ]);
 
         if($image == null){
@@ -249,9 +248,29 @@ class MemberController extends Controller
         $package->pt_remark_mem = $request['pt_remark_mem'];
         $package->save();
 
+        $get_count = DB::table('members')
+              ->count();
+
+        $l = strlen($get_count);
+        $get_count2 = $get_count+1;
+        if($l == 1){
+
+          $get_l = '00'.$get_count2;
+
+        }elseif($l == 2){
+          $get_l = '0'.$get_count2;
+        }else{
+          $get_l = $get_count2;
+        }
+
+      //  dd($get_l);
+
+
+        $randomSixDigitInt = 'GT62-'.($get_l).'-'.(\random_int(100, 999));
+
         $the_id = $package->id;
           //$no_mem = 'GT'.$the_id.''.Auth::user()->id.'-'.$request['sex_mem'].''.$request['type_mem'].''.$request['pay_type_mem'];
-          $randomSixDigitInt = (\random_int(100, 999)).'-'.(\random_int(100, 999)).'-'.(\random_int(100, 999));
+
           $package = member::find($the_id);
           $package->no_mem = $randomSixDigitInt;
           $package->save();
@@ -411,7 +430,19 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $randomSixDigitInt = (\random_int(100, 999)).'-'.(\random_int(100, 999)).'-'.(\random_int(100, 999));
+        $get_count = DB::table('members')
+              ->count();
+        $l = strlen($id);
+
+        if($l == 1){
+          $get_l = '00'.$id;
+        }elseif($l == 1){
+          $get_l = '0'.$id;
+        }else{
+          $get_l = $id;
+        }
+
+        $randomSixDigitInt = 'GT62-'.($get_l).'-'.(\random_int(100, 999));
         $image = $request->file('image');
 
         $this->validate($request, [
@@ -423,8 +454,7 @@ class MemberController extends Controller
          'start_at' => 'required',
          'end_at' => 'required',
          'type_mem' => 'required',
-         'pay_type_mem' => 'required',
-         'amount_mem' => 'required'
+         'pay_type_mem' => 'required'
         ]);
 
         if($image == null){
