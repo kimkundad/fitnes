@@ -122,10 +122,10 @@
                                       ชม.
                                     </td>
                                     <td>
-                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="101">ฟิตเนส</button>
-                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="102">เทรนเนอร์</button>
-                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="103">คลาส</button>
-                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="104">ว่ายน้ำ</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="101" data-tp="{{$u->pt_id}}">ฟิตเนส</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="102" data-tp="{{$u->pt_id}}">เทรนเนอร์</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="103" data-tp="{{$u->pt_id}}">คลาส</button>
+                                      <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="104" data-tp="{{$u->pt_id}}">ว่ายน้ำ</button>
                                     </td>
                                   </tr>
                                   @endforeach
@@ -489,6 +489,8 @@ $(document).ready(function () {
 $(document).ready(function(){
   $(".btn-f").click(function(e){
     var abc = $(this).attr('data-id');
+    var tp_id = $(this).attr('data-tp');
+
     console.log(abc);
        e.preventDefault();
     var user_id = $(this).closest('tr').attr('id');
@@ -497,7 +499,7 @@ $(document).ready(function(){
             type:'POST',
             url:'{{url('api/api_tech_status')}}',
             headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
-            data: { "user_id" : user_id, "data_id" : abc},
+            data: { "user_id" : user_id, "data_id" : abc, "tp_id" : tp_id},
             success: function(data){
               if(data.data.success == 1001){
 

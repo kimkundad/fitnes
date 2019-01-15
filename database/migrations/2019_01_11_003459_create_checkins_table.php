@@ -21,6 +21,7 @@ class CreateCheckinsTable extends Migration
             $table->string('time_type');
             $table->integer('user_type');
             $table->integer('admin_id');
+            $table->integer('tp_id');
             $table->integer('status')->default('0');
             $table->timestamps();
         });

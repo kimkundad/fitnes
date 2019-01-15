@@ -165,9 +165,13 @@ class DashboardController extends Controller
 
 
          public function api_tech_status(Request $request){
+
            $user = member::findOrFail($request->user_id);
            //dd($user->pt_hr);
+
            $data_id = $request->data_id;
+           $tp_id = $request->tp_id;
+
            $get_point = 0;
            if($data_id == 101){
             $get_value = 'ฟิตเนส';
@@ -212,6 +216,7 @@ class DashboardController extends Controller
            $package->time_ch = $get_time;
            $package->time_type = $get_value;
            $package->user_type = $user->type_mem;
+           $package->tp_id = $tp_id;
            $package->admin_id = Auth::user()->id;
            $package->status = 1;
            $package->save();
