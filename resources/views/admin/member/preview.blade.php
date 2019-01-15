@@ -172,7 +172,7 @@
                                                         </td>
                                                       </tr>
                                                     </table>
-                                                    @if(strlen($objs->first_name_mem.''.$objs->last_name_mem) < 9)
+                                                    @if(strlen($objs->first_name_mem.''.$objs->last_name_mem) > 9)
                                                     <table class="col-lg-12 offset-md-3" style = ' text-align:justify; width:100%'>
                                                       <tr>
                                                         <td>
