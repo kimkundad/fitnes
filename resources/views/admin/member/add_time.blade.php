@@ -10,7 +10,7 @@
                                     <i class="pe-7s-users icon-gradient bg-tempting-azure">
                                     </i>
                                 </div>
-                                <div>รายชื่อสมาชิก GT Fitnes
+                                <div>ประวัติสมาชิก GT Fitnes
                                     <div class="page-title-subheading">รายชื่อสมาชิก ของ GT Fitnes ทั้งหมด
                                     </div>
                                 </div>
