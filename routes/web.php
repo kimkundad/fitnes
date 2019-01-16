@@ -47,6 +47,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::post('search_mem', 'MemberController@search_mem');
   Route::post('search_mem_dash', 'DashboardController@search_mem');
   Route::post('api/api_tech_status', 'DashboardController@api_tech_status');
+  Route::post('admin/add_time_post', 'MemberController@add_time_post');
 
   Route::get('admin/get_member_his', 'MemberController@get_member_his');
   Route::get('admin/add_time/{id}', 'MemberController@add_time');

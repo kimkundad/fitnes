@@ -56,6 +56,7 @@
                                                   <div class="row">
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่เริ่มต้น<span class="text-danger">*</span></label>
                                                     <input type="text" name="start_at" class="form-control" value="{{ $objs->start_at }}" data-toggle="datepicker">
+                                                    <input type="hidden" name="user_id" class="form-control" value="{{ $objs->id }}" >
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่สิ้นสุด<span class="text-danger">*</span></label>

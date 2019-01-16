@@ -216,6 +216,31 @@ class MemberController extends Controller
 
      }
 
+     public function add_time_post(Request $request){
+
+       $user_id = $request['user_id'];
+
+       $package = member::find($user_id);
+       $package->start_at = $request['start_at'];
+       $package->end_at = $request['end_at'];
+       $package->type_mem = $request['type_mem'];
+       $package->pay_type_mem = $request['pay_type_mem'];
+       $package->amount_mem = $request['amount_mem'];
+       $package->re_amount_mem = $request['re_amount_mem'];
+       $package->remark_mem = $request['remark_mem'];
+       $package->status_mem = $request['status_mem'];
+       $package->pt_end_at = $request['pt_end_at'];
+       $package->pt_hr = $request['pt_hr'];
+       $package->pt_pay_type_mem = $request['pt_pay_type_mem'];
+       $package->pt_amount_mem = $request['pt_amount_mem'];
+       $package->pt_re_amount_mem = $request['pt_re_amount_mem'];
+       $package->pt_remark_mem = $request['pt_remark_mem'];
+       $package->save();
+
+       return redirect(url('admin/member/'))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
+
+     }
+
 
 
 
