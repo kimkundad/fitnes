@@ -202,8 +202,13 @@ class MemberController extends Controller
 
      public function add_time($id){
 
-       $obj = trainer::all();
-       $data['trainer'] = $obj;
+       $trainer = trainer::all();
+       $data['trainer'] = $trainer;
+
+       $objs = member::find($id);
+
+       $data['objs'] = $objs;
+
        $data['method'] = "post";
        $data['url'] = url('admin/add_time_post');
        $data['datahead'] = "สมัครสมาชิก GT Fitnes";

@@ -55,23 +55,23 @@
                                               <h5 class="card-title">ประเภทสมาชิก</h5>
                                                   <div class="row">
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่เริ่มต้น<span class="text-danger">*</span></label>
-                                                    <input type="text" name="start_at" class="form-control" value="{{ old('start_at') }}" data-toggle="datepicker">
+                                                    <input type="text" name="start_at" class="form-control" value="{{ $objs->start_at }}" data-toggle="datepicker">
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่สิ้นสุด<span class="text-danger">*</span></label>
-                                                    <input type="text" name="end_at" class="form-control" value="{{ old('end_at') }}" data-toggle="datepicker">
+                                                    <input type="text" name="end_at" class="form-control" value="{{ $objs->end_at }}" data-toggle="datepicker">
                                                   </div>
 
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ประเภทสมาชิก<span class="text-danger">*</span></label>
                                                     <select name="type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('type_mem') == 1)
+                                                      <option value="1" @if($objs->type_mem == 1)
                                     selected='selected'
                                     @endif>รายวัน</option>
-                                                      <option value="2" @if(old('type_mem') == 2)
+                                                      <option value="2" @if($objs->type_mem == 2)
                                     selected='selected'
                                     @endif>รายเดือน</option>
-                                                      <option value="3" @if(old('type_mem') == 3)
+                                                      <option value="3" @if($objs->type_mem == 3)
                                     selected='selected'
                                     @endif>รายปี</option>
                                                   </select>
@@ -80,10 +80,10 @@
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ช่องทางการชำระเงิน<span class="text-danger">*</span></label>
                                                     <select name="pay_type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('pay_type_mem') == 1)
+                                                      <option value="1" @if($objs->pay_type_mem == 1)
                                     selected='selected'
                                     @endif>เงินสด</option>
-                                                      <option value="2" @if(old('pay_type_mem') == 2)
+                                                      <option value="2" @if($objs->pay_type_mem == 2)
                                     selected='selected'
                                     @endif>ผ่อนชำระ</option>
 
@@ -92,10 +92,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="amount_mem" placeholder="1500" value="{{ old('amount_mem') }}" type="text" class="form-control">
+                                                    <input name="amount_mem" placeholder="1500" value="{{$objs->amount_mem}}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="re_amount_mem" placeholder="00" value="{{ old('re_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="re_amount_mem" placeholder="00" value="{{$objs->re_amount_mem}}" type="text" class="form-control">
                                                   </div>
 
 
@@ -105,7 +105,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="remark_mem" style="height:150px" class="form-control">{{ old('remark_mem') }}</textarea>
+                                                  <textarea name="remark_mem" style="height:150px" class="form-control">{{$objs->remark_mem}}</textarea>
                                                 </div>
                                             </div>
 
@@ -122,7 +122,7 @@
                                                         <option> -- เลือก Trainer -- </option>
                                                         @if(isset($trainer))
                                                         @foreach($trainer as $u)
-                                                        <option value="{{$u->id}}" @if(old('pt_id') == $u->id)
+                                                        <option value="{{$u->id}}" @if($objs->pt_id == $u->id)
                                       selected='selected'
                                       @endif>{{$u->trainer_name}}</option>
                                                         @endforeach
@@ -131,20 +131,20 @@
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนชั่วโมง</label>
-                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{ old('pt_hr') }}" class="form-control">
+                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{$objs->pt_hr}}" class="form-control">
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่หมดอายุ</label>
-                                                      <input type="pt_end_at" class="form-control" value="{{ old('pt_end_at') }}" data-toggle="datepicker">
+                                                      <input name="pt_end_at" class="form-control" value="{{$objs->pt_end_at}}" data-toggle="datepicker">
                                                     </div>
 
                                                   <div class="position-relative form-group col-md-6">
                                                     <label for="exampleEmail" class="">ช่องทางการชำระเงิน</label>
                                                     <select name="pt_pay_type_mem" id="exampleSelect" class="form-control">
-                                                      <option value="1" @if(old('pt_pay_type_mem') == 1)
+                                                      <option value="1" @if($objs->pt_pay_type_mem == 1)
                                     selected='selected'
                                     @endif>เงินสด</option>
-                                                      <option value="2" @if(old('pt_pay_type_mem') == 2)
+                                                      <option value="2" @if($objs->pt_pay_type_mem == 2)
                                     selected='selected'
                                     @endif>ผ่อนชำระ</option>
 
@@ -153,10 +153,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="pt_amount_mem" placeholder="1500" value="{{ old('pt_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="pt_amount_mem" placeholder="1500" value="{{$objs->pt_amount_mem}}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{ old('pt_re_amount_mem') }}" value="0" type="text" class="form-control">
+                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{$objs->pt_re_amount_mem}}" value="0" type="text" class="form-control">
                                                   </div>
 
 
@@ -166,10 +166,9 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control">{{ old('pt_remark_mem') }}</textarea>
+                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control">{{$objs->pt_remark_mem}}</textarea>
                                                 </div>
                                             </div>
-
 
 
 
