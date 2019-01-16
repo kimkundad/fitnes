@@ -25,8 +25,8 @@
                                     <i class="pe-7s-ball icon-gradient bg-tempting-azure">
                                     </i>
                                 </div>
-                                <div>ข้อมูล Trainer GT Fitnes
-                                    <div class="page-title-subheading">ข้อมูล Trainer GT Fitnes ในระบบ ทั้งหมด
+                                <div>ประวัติสมาชิก GT Fitnes
+                                    <div class="page-title-subheading">ข้อมูล ประวัติสมาชิก GT Fitnes GT Fitnes ในระบบ ทั้งหมด
                                     </div>
                                 </div>
                             </div>
