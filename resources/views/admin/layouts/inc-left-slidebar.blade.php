@@ -66,7 +66,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{url('admin/get_member_his')}}" {{ (Request::is('admin/get_member_his') ? 'class=mm-active' : '') }} >
                                             <i class="metismenu-icon">
                                             </i>ประวัติสมาชิก
                                         </a>
@@ -84,13 +84,13 @@
 
                                 <ul class="mm-show">
                                     <li>
-                                        <a href="{{url('admin/trainer')}}" {{ (Request::is('admin/trainer*') ? 'class=mm-active' : '') }}>
+                                        <a href="{{url('admin/trainer')}}" {{ (Request::is('admin/trainer*') ? 'class=mm-active' : '') }} {{ (Request::is('admin/trainer/create') ? 'class=mm-active' : '') }} >
                                             <i class="metismenu-icon">
                                             </i>เพิ่ม Trainers
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" >
+                                        <a href="{{url('admin/his_trainer')}}" {{ (Request::is('admin/his_trainer') ? 'class=mm-active' : '') }}>
                                             <i class="metismenu-icon">
                                             </i>ประวัติ Trainers
                                         </a>

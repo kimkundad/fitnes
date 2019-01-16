@@ -100,6 +100,49 @@ class TrainerController extends Controller
         //
     }
 
+    public function trainer_his_id($id){
+
+      $trainer = DB::table('checkins')->select(
+            'checkins.*',
+            'checkins.id as idc',
+            'trainers.*',
+            'members.*'
+            )
+            ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
+            ->leftjoin('members', 'members.id',  'checkins.user_id')
+            ->where('checkins.tp_id', $id)
+            ->where('checkins.time_type', 'เทรนเนอร์')
+            ->get();
+
+      $s = 1;
+      $data['s'] = $s;
+
+      $data['trainer'] = $trainer;
+      return view('admin.trainer.trainer_his_id', $data);
+
+    }
+
+    public function trainer_his()
+    {
+        //
+        $trainer = DB::table('checkins')->select(
+              'checkins.*',
+              'checkins.id as idc',
+              'trainers.*',
+              'members.*'
+              )
+              ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
+              ->leftjoin('members', 'members.id',  'checkins.user_id')
+              ->where('checkins.time_type', 'เทรนเนอร์')
+              ->get();
+
+        $s = 1;
+        $data['s'] = $s;
+
+        $data['trainer'] = $trainer;
+        return view('admin.trainer.trainer_his', $data);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -167,7 +167,7 @@
 
                                     <th>ประเภท</th>
                                     <th>จำนวน ชม. PT.</th>
-                                    <th>
+                                    <th style=" ">
 
                                     </th>
                                 </tr>
@@ -189,6 +189,7 @@
                                       @endif
 
                                     </td>
+
                                     <td>
                                       <div class="widget-content p-0">
                                                         <div class="widget-content-wrapper">
@@ -225,10 +226,7 @@
                                     <td>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/history')}}" style="float: left;"><b><i class="pe-7s-file btn-icon-wrapper"> </i> ดูประวัติ</b></a>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
-                                      <a class="mb-2 mr-2 btn-pill btn btn-secondary" href="#">ต่ออายุสมาชิก</a>
-
-
-
+                                      <a class="mb-2 mr-2 btn-pill btn btn-secondary" href="{{url('admin/add_time/'.$u->id)}}">ต่ออายุสมาชิก</a>
                                     </td>
                                   </tr>
                                   @endforeach

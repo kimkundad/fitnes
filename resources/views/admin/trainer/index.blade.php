@@ -2,6 +2,22 @@
 
 @section('admin.content')
 
+<?php
+                        function DateThai($strDate)
+                        {
+                        $strYear = date("Y",strtotime($strDate))+543;
+                        $strMonth= date("n",strtotime($strDate));
+                        $strDay= date("j",strtotime($strDate));
+                        $strHour= date("H",strtotime($strDate));
+                        $strMinute= date("i",strtotime($strDate));
+                        $strSeconds= date("s",strtotime($strDate));
+                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                        $strMonthThai=$strMonthCut[$strMonth];
+                        return "$strDay $strMonthThai $strYear";
+                        }
+
+                         ?>
+
 <div class="app-page-title">
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
@@ -56,7 +72,7 @@
                                       </th>
 
 
-                                      <th>จัดการ</th>
+                                      <th style="width:260px;">จัดการ</th>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -92,19 +108,19 @@
                                           {{$u->name_cat}}
                                         </td>
                                         <td>
-                                          {{$u->created_at}}
+                                          <?php echo DateThai($u->created_at); ?>
                                         </td>
-                                        <td>
+                                        <td style="width:260px;">
 
                                           <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" href="{{url('admin/trainer/'.$u->idc.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
 
 
-                                          <form  action="{{url('admin/trainer/'.$u->idc)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+                                          <form  action="{{url('admin/trainer/'.$u->idc)}}" method="post"  style="float: left;" onsubmit="return(confirm('Do you want Delete'))">
                                               <input type="hidden" name="_method" value="DELETE">
                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                               <button type="submit" class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" ><b><i class="pe-7s-trash btn-icon-wrapper"> </i> ลบ</b></button>
                                           </form>
-
+                                          <a class="mb-2 mr-2 btn-pill btn btn-secondary" style="float:right" href="{{url('admin/trainer_his/'.$u->idc)}}">ดูประวัติ</a>
                                         </td>
 
                                     </tr>

@@ -80,6 +80,27 @@ class MemberController extends Controller
         return view('admin.member.create', $data);
     }
 
+
+    public function get_member_his(){
+
+      $trainer = DB::table('checkins')->select(
+            'checkins.*',
+            'checkins.id as idc',
+            'trainers.*',
+            'members.*'
+            )
+            ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
+            ->leftjoin('members', 'members.id',  'checkins.user_id')
+            ->get();
+
+      $s = 1;
+      $data['s'] = $s;
+
+      $data['trainer'] = $trainer;
+      return view('admin.member.get_member_his', $data);
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -174,6 +195,19 @@ class MemberController extends Controller
       $data['objs'] = $get_data;
       $data['datahead'] = "รายชื่อสมาชิก GT Fitnes";
       return view('admin.member.search', $data);
+
+     }
+
+
+
+     public function add_time($id){
+
+       $obj = trainer::all();
+       $data['trainer'] = $obj;
+       $data['method'] = "post";
+       $data['url'] = url('admin/add_time_post');
+       $data['datahead'] = "สมัครสมาชิก GT Fitnes";
+       return view('admin.member.add_time', $data);
 
      }
 
