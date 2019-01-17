@@ -148,9 +148,10 @@
                             <div class="col-lg-12 ">
 
                               <style>
-                              .badge-orange {
+                              .btn-orange {
                                   color: #fff;
                                   background-color: #fd7e14;
+                                  border-color: #fd7e14;
                               }
                               </style>
 
