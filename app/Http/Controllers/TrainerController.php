@@ -102,6 +102,10 @@ class TrainerController extends Controller
 
     public function trainer_his_id($id){
 
+      $obj = trainer::find($id);
+
+
+
       $trainer = DB::table('checkins')->select(
             'checkins.*',
             'checkins.id as idc',
@@ -118,6 +122,7 @@ class TrainerController extends Controller
       $data['s'] = $s;
 
       $data['trainer'] = $trainer;
+      $data['trainer_data'] = $obj;
       return view('admin.trainer.trainer_his_id', $data);
 
     }

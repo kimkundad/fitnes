@@ -59,29 +59,73 @@
                                 <div class="main-card card">
                           <div class="card-body">
 
+                            <h5>ประวัติและสถิติ</h5>
+                            <br />
+                            <div class="widget-content p-0">
+                                              <div class="widget-content-wrapper">
+                                                  <div class="widget-content-left mr-3">
+                                                      <div class="widget-content-left">
+                                                          <img width="40" class="rounded-circle" src="{{url('assets/images/avatars/'.$trainer_data->trainer_image)}}" alt="">
+                                                      </div>
+                                                  </div>
+                                                  <div class="widget-content-left flex2">
+                                                      <div class="widget-heading">{{$trainer_data->trainer_name}}</div>
+                                                      <div class="widget-subheading opacity-7">{{$trainer_data->trainer_phone}}</div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br />
+                            <h5>สถิติ Personal Trainer</h5>
+
                               <table style="width: 100%;"  class="table table-hover table-striped ">
                                   <thead>
-                                  <tr>
-                                      <th>สมาชิก</th>
-
-                                      <th>วันที่</th>
-                                      <th>
-                                        เวลา
-                                      </th>
-                                      <th>
-                                        รูปแบบการเข้าใช้งาน
-                                      </th>
+                                    <tr>
+                                        <th>หมายเลขสมาชิก</th>
+                                        <th>
+                                          สถานะ
+                                        </th>
+                                        <th>ชื่อ - นามสกุล</th>
 
 
-                                      <th >ประเภท</th>
-                                  </tr>
+                                        <th>วันที่</th>
+                                        <th>
+                                          เวลา
+                                        </th>
+
+
+
+                                        <th >จำนวนชั่วโมงคงเหลือ</th>
+                                    </tr>
                                   </thead>
                                   <tbody>
 
+                                    <?php $get_date = date("Y-m-d"); ?>
                                     @if(isset($trainer))
                                     @foreach($trainer as $u)
 
+                                    <?php
+
+                                    $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+                                    $data_2 = ($get_date2/86400);
+                                    //echo $data_2;
+                                    $u->days = $data_2;
+                                    if($data_2 <= 30 && $data_2 > 15 ){
+                                      $success = 'orange';
+                                    }elseif($data_2 <= 15 && $data_2 > 0 ){
+                                      $success = 'warning';
+                                    }else{
+                                      $success = 'danger';
+                                    }
+
+                                    ?>
+
                                     <tr>
+                                      <td>
+                                        #{{$u->no_mem}}
+                                      </td>
+                                      <td>
+                                        <div class="badge badge-{{$success}} "><?php echo DateThai($u->end_at); ?></div>
+                                      </td>
                                       <td>
                                         <div class="widget-content p-0">
                                                           <div class="widget-content-wrapper">
@@ -106,17 +150,9 @@
                                         {{$u->time_ch}} น.
                                       </td>
                                       <td>
-                                        {{$u->time_type}}
+                                        {{$u->pt_hr}} ชม.
                                       </td>
-                                      <td>
-                                        @if($u->user_type == 1)
-                                        รายวัน
-                                        @elseif($u->user_type == 2)
-                                        รายเดือน
-                                        @else
-                                        รายปี
-                                        @endif
-                                      </td>
+
                                     </tr {{$s++}}>
 
                                     @endforeach

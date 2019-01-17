@@ -44,7 +44,12 @@
 
 
 
-
+<style>
+.badge-orange {
+    color: #fff;
+    background-color: #fd7e14;
+}
+</style>
 
 
 
@@ -62,42 +67,50 @@
                               <table style="width: 100%;"  class="table table-hover table-striped ">
                                   <thead>
                                   <tr>
-                                      <th>สมาชิก</th>
+                                      <th>หมายเลขสมาชิก</th>
+                                      <th>
+                                        สถานะ
+                                      </th>
                                       <th>trainer</th>
-                                    
+
 
                                       <th>วันที่</th>
                                       <th>
                                         เวลา
                                       </th>
-                                      <th>
-                                        รูปแบบการเข้าใช้งาน
-                                      </th>
 
 
-                                      <th >ประเภท</th>
+
+                                      <th >จำนวนชั่วโมงคงเหลือ</th>
                                   </tr>
                                   </thead>
                                   <tbody>
-
+                                    <?php $get_date = date("Y-m-d"); ?>
                                     @if(isset($trainer))
                                     @foreach($trainer as $u)
 
+                                    <?php
+
+                                    $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+                                    $data_2 = ($get_date2/86400);
+                                    //echo $data_2;
+                                    $u->days = $data_2;
+                                    if($data_2 <= 30 && $data_2 > 15 ){
+                                      $success = 'orange';
+                                    }elseif($data_2 <= 15 && $data_2 > 0 ){
+                                      $success = 'warning';
+                                    }else{
+                                      $success = 'danger';
+                                    }
+
+                                    ?>
+
                                     <tr>
                                       <td>
-                                        <div class="widget-content p-0">
-                                                          <div class="widget-content-wrapper">
-                                                              <div class="widget-content-left mr-3">
-                                                                  <div class="widget-content-left">
-                                                                      <img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt="">
-                                                                  </div>
-                                                              </div>
-                                                              <div class="widget-content-left flex2">
-                                                                  <div class="widget-heading">{{$u->first_name_mem}} {{$u->last_name_mem}}</div>
-                                                                  <div class="widget-subheading">{{$u->phone_mem}}</div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
+                                        #{{$u->no_mem}}
+                                      </td>
+                                      <td>
+                                        <div class="badge badge-{{$success}} "><?php echo DateThai($u->end_at); ?></div>
                                       </td>
                                       <td>
                                         <div class="widget-content p-0">
@@ -114,24 +127,16 @@
                                                           </div>
                                                       </div>
                                       </td>
-                                      <td>
+                                      <td class="text-center">
 
                                         <?php echo DateThai($u->start_at); ?>
                                       </td>
                                       <td>
                                         {{$u->time_ch}} น.
                                       </td>
+
                                       <td>
-                                        {{$u->time_type}}
-                                      </td>
-                                      <td>
-                                        @if($u->user_type == 1)
-                                        รายวัน
-                                        @elseif($u->user_type == 2)
-                                        รายเดือน
-                                        @else
-                                        รายปี
-                                        @endif
+                                        {{$u->pt_hr}} ชม.
                                       </td>
                                     </tr {{$s++}}>
 

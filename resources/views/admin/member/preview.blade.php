@@ -149,7 +149,8 @@
 
 
                                                 <div class=" rounded" style="margin: 0 auto; z-index:99;">
-                                                    <img  class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" style="position: absolute; left: 170px; top: -230px; width:420px; height:420px; margin-bottom:-110px; border-radius: 50%;">
+                                                  <h5 style="font-size: 2.2rem; position: absolute; left: 275px; top: -265px;" > {{$objs->no_mem}} </h5>
+                                                    <img  class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" style="position: absolute; left: 185px; top: -220px; width:412px; height:412px; margin-bottom:-110px; border-radius: 50%;">
 
                                                 </div>
 
@@ -191,7 +192,7 @@
                                                     @endif
                                                     <br />
 
-                                                    <table class="col-lg-12" style = 'margin-left: 300px; text-align:justify; width:100%'>
+                                                    <table class="col-lg-12" style = 'margin-left: 285px; text-align:justify; width:100%'>
                                                       <tr>
                                                         <td>
                                                       <div  class="btn-wide btn-shadow  btn btn-danger" style="font-size: 30px; text-align:justify;">@if($objs->type_mem == 1)
