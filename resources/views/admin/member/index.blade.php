@@ -153,6 +153,11 @@
                                   background-color: #fd7e14;
                                   border-color: #fd7e14;
                               }
+                              .btn-warning {
+    color: #fff;
+    background-color: #f7b924;
+    border-color: #f7b924;
+}
                               </style>
 
                               <br />
