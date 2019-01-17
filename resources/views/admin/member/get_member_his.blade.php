@@ -102,7 +102,7 @@
 
                                       <td>
 
-                                        <?php echo DateThai($u->start_at); ?>
+                                        <?php echo DateThai($u->start_at11); ?>
                                       </td>
                                       <td>
                                         {{$u->time_ch}} น.

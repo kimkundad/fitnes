@@ -110,6 +110,7 @@ class MemberController extends Controller
       $trainer = DB::table('checkins')->select(
             'checkins.*',
             'checkins.id as idc',
+            'checkins.start_at as start_at11',
             'trainers.*',
             'members.*'
             )
