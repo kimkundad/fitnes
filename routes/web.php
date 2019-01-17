@@ -54,4 +54,8 @@ Route::group(['middleware' => 'admin'], function() {
   Route::post('search_history', 'MemberController@search_history')->name('search_history');
   Route::get('admin/his_trainer', 'TrainerController@trainer_his');
   Route::get('admin/trainer_his/{id}', 'TrainerController@trainer_his_id');
+
+  Route::get('admin/check_in_member', 'MemberController@check_in_member')->name('check_in_member');
+  Route::post('admin/search_mem_checkin', 'MemberController@search_mem_checkin')->name('search_mem_checkin');
+
 });

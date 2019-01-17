@@ -64,6 +64,30 @@ class MemberController extends Controller
 
 
 
+    public function check_in_member(){
+      return view('admin.member.check_in_member');
+    }
+
+    public function search_mem_checkin(Request $request){
+
+      $this->validate($request, [
+       'search' => 'required'
+     ]);
+     $search = $request->get('search');
+
+     $get_data = DB::table('members')->select(
+           'members.*'
+           )
+           ->where('no_mem', 'like', "%$search%")
+           ->orWhere('first_name_mem', 'LIKE', "%$search%")
+           ->get();
+
+    //  dd($get_data);
+      $data['search'] = $search;
+      $data['objs'] = $get_data;
+      return view('admin.member.check_in_member_search', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
