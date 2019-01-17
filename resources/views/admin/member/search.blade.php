@@ -182,16 +182,35 @@
                                 </thead>
                                 <tbody>
 
-
+                                  <?php $get_date = date("Y-m-d"); ?>
                                   @if(isset($objs))
                                   @foreach($objs as $u)
+
+                                  <?php
+
+                                  $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+                                  $data_2 = ($get_date2/86400);
+                                  //echo $data_2;
+                                  $u->days = $data_2;
+                                  if($data_2 <= 30 && $data_2 > 15 ){
+                                    $success = 'orange';
+                                  }elseif($data_2 <= 15 && $data_2 > 0 ){
+                                    $success = 'warning';
+                                  }elseif($data_2 >= 30){
+                                    $success = 'success';
+                                  }else{
+                                    $success = 'danger';
+                                  }
+
+                                  ?>
+
+
                                   <tr>
                                     <td>
                                       #{{$u->no_mem}}
                                     </td>
                                     <td>
-                                      <button class="mb-2 mr-2 btn btn-success btn-sm"><?php echo DateThai($u->end_at); ?>
-                                            </button>
+                                      <div class="badge badge-{{$success}} "><?php echo DateThai($u->end_at); ?></div>
                                     </td>
                                     <td>
                                       <div class="widget-content p-0">

@@ -113,6 +113,8 @@
                                       $success = 'orange';
                                     }elseif($data_2 <= 15 && $data_2 > 0 ){
                                       $success = 'warning';
+                                    }elseif($data_2 >= 30){
+                                      $success = 'success';
                                     }else{
                                       $success = 'danger';
                                     }
