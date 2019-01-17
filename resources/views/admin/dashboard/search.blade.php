@@ -78,7 +78,7 @@
                                 <tbody>
                                   @if(isset($get_data_meme))
                                   @foreach($get_data_meme as $u)
-                                  <tr id="{{$u->id}} ">
+                                  <tr id="{{$u->id}} {{$percen = 0}}">
                                     <td>
                                       #{{$u->no_mem}}
                                     </td>
@@ -115,11 +115,19 @@
                                     </td>
                                     <td>
                                       @if($u->pt_hr == null)
-                                      0
+                                      <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                                                </div>
                                       @else
-                                      {{$u->pt_hr}}
+                                      <?php
+                                      $percen = (( $u->pt_hr / $u->tp_hr_ba )*100);
+                                      ?>
+                                      <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{$percen}}" aria-valuemin="0" aria-valuemax="{{$u->tp_hr_ba}}" style="width: {{$percen}}%;"></div>
+                                                                </div>
+
                                       @endif
-                                      ชม.
+
                                     </td>
                                     <td>
                                       <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="101" data-tp="{{$u->pt_id}}">ฟิตเนส</button>

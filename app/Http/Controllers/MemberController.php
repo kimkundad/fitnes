@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\member;
+use App\mem_pay;
 use App\trainer;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -245,21 +246,37 @@ class MemberController extends Controller
 
        $user_id = $request['user_id'];
 
+
+
+       $objs = member::find($user_id);
+       $pt_hr_mem_old = 0;
+       $pt_hr_mem_old = $objs->pt_hr + $request['pt_hr'];
+
+       $obj = new mem_pay();
+       $obj->user_id = $user_id;
+       $obj->mem_type = $request['type_mem'];
+       $obj->admin_id = Auth::user()->id;
+       $obj->pt_id = $request['pt_id'];
+       $obj->pt_hr_mem = $request['pt_hr'];
+       $obj->pt_money_mem = $request['pt_amount_mem'];
+       $obj->pt_money_mem_re = $request['pt_re_amount_mem'];
+       $obj->pt_hr_mem_old = $objs->pt_hr;
+       $obj->pt_pay_type = $request['pt_pay_type_mem'];
+       $obj->pay_type = $request['pay_type_mem'];
+       $obj->mem_money_mem = $request['amount_mem'];
+       $obj->mem_money_mem_re = $request['re_amount_mem'];
+       $obj->pt_note = $request['pt_remark_mem'];
+       $obj->note = $request['remark_mem'];
+       $obj->save();
+
+
        $package = member::find($user_id);
+       $package->pt_id = $request['pt_id'];
        $package->start_at = $request['start_at'];
        $package->end_at = $request['end_at'];
-       $package->type_mem = $request['type_mem'];
-       $package->pay_type_mem = $request['pay_type_mem'];
-       $package->amount_mem = $request['amount_mem'];
-       $package->re_amount_mem = $request['re_amount_mem'];
-       $package->remark_mem = $request['remark_mem'];
-       $package->status_mem = $request['status_mem'];
        $package->pt_end_at = $request['pt_end_at'];
-       $package->pt_hr = $request['pt_hr'];
-       $package->pt_pay_type_mem = $request['pt_pay_type_mem'];
-       $package->pt_amount_mem = $request['pt_amount_mem'];
-       $package->pt_re_amount_mem = $request['pt_re_amount_mem'];
-       $package->pt_remark_mem = $request['pt_remark_mem'];
+       $package->pt_hr = $pt_hr_mem_old;
+       $package->tp_hr_ba = $pt_hr_mem_old;
        $package->save();
 
        return redirect(url('admin/member/'))->with('add_success','คุณทำการเพิ่มอสังหา สำเร็จ');
@@ -331,11 +348,35 @@ class MemberController extends Controller
         $package->admin_id = Auth::user()->id;
         $package->pt_end_at = $request['pt_end_at'];
         $package->pt_hr = $request['pt_hr'];
+        $package->tp_hr_ba = $request['pt_hr'];
         $package->pt_pay_type_mem = $request['pt_pay_type_mem'];
         $package->pt_amount_mem = $request['pt_amount_mem'];
         $package->pt_re_amount_mem = $request['pt_re_amount_mem'];
         $package->pt_remark_mem = $request['pt_remark_mem'];
         $package->save();
+
+
+
+
+        $obj = new mem_pay();
+        $obj->user_id = $package->id;
+        $obj->admin_id = Auth::user()->id;
+        $obj->mem_type = $request['type_mem'];
+        $obj->pt_id = $request['pt_id'];
+        $obj->pt_hr_mem = $request['pt_hr'];
+        $obj->pt_money_mem = $request['pt_amount_mem'];
+        $obj->pt_money_mem_re = $request['pt_re_amount_mem'];
+        $obj->pt_hr_mem_old = 0;
+        $obj->pt_pay_type = $request['pt_pay_type_mem'];
+        $obj->pay_type = $request['pay_type_mem'];
+        $obj->mem_money_mem = $request['amount_mem'];
+        $obj->mem_money_mem_re = $request['re_amount_mem'];
+        $obj->pt_note = $request['pt_remark_mem'];
+        $obj->note = $request['remark_mem'];
+        $obj->save();
+
+
+
 
         $get_count = DB::table('members')
               ->count();
@@ -507,6 +548,59 @@ class MemberController extends Controller
         $data['method'] = "put";
         $data['objs'] = $objs;
         return view('admin.member.edit', $data);
+    }
+
+
+    public function pay_member($id){
+
+
+      $get_data_chart = DB::table('checkins')->select(
+            'checkins.*'
+            )
+            ->where('user_id', $id)
+            ->groupBy('time_type')
+            ->get();
+            $get_array = [];
+            $ran = array("ฟิตเนส","เทรนเนอร์","คลาส","ว่ายน้ำ");
+            foreach($ran as $u){
+
+              $get_count = DB::table('checkins')->select(
+                    'checkins.*'
+                    )
+                    ->where('user_id', $id)
+                    ->where('time_type', $u)
+                    ->count();
+              $get_array[] = $get_count;
+            }
+
+          //  dd($get_array);
+
+
+        //
+        $objs = member::find($id);
+        $s = 1;
+        $data['s'] = $s;
+
+        //dd($objs);
+        $data['objs'] = $objs;
+        $data['get_array'] = $get_array;
+
+        $data['get_data_chart'] = $get_data_chart;
+
+
+
+      $get_data = DB::table('mem_pays')->select(
+            'mem_pays.*',
+            'mem_pays.created_at as created_at1',
+            'trainers.*'
+            )
+            ->leftjoin('trainers', 'trainers.id',  'mem_pays.pt_id')
+            ->where('mem_pays.user_id', $id)
+            ->get();
+
+
+      $data['get_data'] = $get_data;
+      return view('admin.member.pay_member', $data);
     }
 
     /**

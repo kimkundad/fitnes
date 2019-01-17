@@ -93,10 +93,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="amount_mem" placeholder="1500" value="{{$objs->amount_mem}}" type="text" class="form-control">
+                                                    <input name="amount_mem" placeholder="1500"  type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="re_amount_mem" placeholder="00" value="{{$objs->re_amount_mem}}" type="text" class="form-control">
+                                                    <input name="re_amount_mem" placeholder="00"  type="text" class="form-control">
                                                   </div>
 
 
@@ -106,7 +106,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="remark_mem" style="height:150px" class="form-control">{{$objs->remark_mem}}</textarea>
+                                                  <textarea name="remark_mem" style="height:150px" class="form-control"></textarea>
                                                 </div>
                                             </div>
 
@@ -132,11 +132,11 @@
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนชั่วโมง</label>
-                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{$objs->pt_hr}}" class="form-control">
+                                                      <input name="pt_hr" placeholder="1500" type="text" class="form-control">
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่หมดอายุ</label>
-                                                      <input name="pt_end_at" class="form-control" value="{{$objs->pt_end_at}}" data-toggle="datepicker">
+                                                      <input name="pt_end_at" class="form-control" value="{{ $objs->pt_end_at }}" data-toggle="datepicker">
                                                     </div>
 
                                                   <div class="position-relative form-group col-md-6">
@@ -154,10 +154,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="pt_amount_mem" placeholder="1500" value="{{$objs->pt_amount_mem}}" type="text" class="form-control">
+                                                    <input name="pt_amount_mem" placeholder="1500" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{$objs->pt_re_amount_mem}}" value="0" type="text" class="form-control">
+                                                    <input name="pt_re_amount_mem" placeholder="00" value="0" type="text" class="form-control">
                                                   </div>
 
 
@@ -167,7 +167,7 @@
 
                                                 <div class="position-relative form-group">
                                                   <label for="exampleEmail" class="">Note</label>
-                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control">{{$objs->pt_remark_mem}}</textarea>
+                                                  <textarea name="pt_remark_mem" style="height:150px" class="form-control"></textarea>
                                                 </div>
                                             </div>
 

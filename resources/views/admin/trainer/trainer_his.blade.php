@@ -68,6 +68,7 @@
                                   <thead>
                                   <tr>
                                       <th>หมายเลขสมาชิก</th>
+                                      <th>ชื่อ - นามสกุล</th>
                                       <th>
                                         สถานะ
                                       </th>
@@ -110,6 +111,21 @@
                                     <tr>
                                       <td>
                                         #{{$u->no_mem}}
+                                      </td>
+                                      <td>
+                                        <div class="widget-content p-0">
+                                                          <div class="widget-content-wrapper">
+                                                              <div class="widget-content-left mr-3">
+                                                                  <div class="widget-content-left">
+                                                                      <img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt="">
+                                                                  </div>
+                                                              </div>
+                                                              <div class="widget-content-left flex2">
+                                                                  <div class="widget-heading">{{$u->first_name_mem}} {{$u->last_name_mem}}</div>
+                                                                  <div class="widget-subheading">{{$u->phone_mem}}</div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
                                       </td>
                                       <td>
                                         <div class="badge badge-{{$success}} "><?php echo DateThai($u->end_at); ?></div>

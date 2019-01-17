@@ -190,6 +190,7 @@
                                   @foreach($objs as $u)
 
                                   <?php $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+                                  $percen = 0;
                                   $data_2 = ($get_date2/86400);
                                   //echo $data_2;
                                   $u->days = $data_2;
@@ -239,13 +240,22 @@
                                     </td>
                                     <td>
                                       @if($u->pt_hr == null)
-                                      0
+                                      <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                                                </div>
                                       @else
-                                      {{$u->pt_hr}}
+                                      <?php
+                                      $percen = (( $u->pt_hr / $u->tp_hr_ba )*100);
+                                      ?>
+                                      <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{$percen}}" aria-valuemin="0" aria-valuemax="{{$u->tp_hr_ba}}" style="width: {{$percen}}%;"></div>
+                                                                </div>
+
                                       @endif
-                                      ชม.
+
                                     </td>
                                     <td>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/pay_member/'.$u->id)}}" style="float: left;"><b><i class="pe-7s-cash btn-icon-wrapper"> </i> ประวัตเติมเงิน</b></a>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/history')}}" style="float: left;"><b><i class="pe-7s-file btn-icon-wrapper"> </i> ดูประวัติ</b></a>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/member/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
                                       <a class="mb-2 mr-2 btn-pill btn btn-secondary" href="{{url('admin/add_time/'.$u->id)}}">ต่ออายุสมาชิก</a>
