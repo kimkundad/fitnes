@@ -232,6 +232,133 @@ class DashboardController extends Controller
          }
 
 
+         public function owner(){
+
+           $get_all_count1 = DB::table('mem_pays')
+                 ->sum('pt_money_mem');
+
+                 $get_all_count2 = DB::table('mem_pays')
+                       ->sum('mem_money_mem');
+           $get_all_count = 0;
+
+           $get_all_count = $get_all_count1 + $get_all_count2;
+
+           $get_array = [];
+           $ran = array(1,2,3,4);
+
+           foreach($ran as $u){
+
+             $get_count = DB::table('mem_pays')->select(
+                   'mem_pays.*'
+                   )
+                   ->where('mem_type', $u)
+                   ->count();
+             $get_array[] = $get_count;
+
+           }
+
+           $get_date = [];
+
+           $date = array([date("Y-1-1"),date("Y-2-1")], [date("Y-2-1"),date("Y-3-1")], [date("Y-3-1"),date("Y-4-1")], [date("Y-4-1"),date("Y-5-1")], [date("Y-5-1"),date("Y-6-1")],
+           [date("Y-6-1"),date("Y-7-1")], [date("Y-7-1"),date("Y-8-1")], [date("Y-8-1"),date("Y-9-1")], [date("Y-9-1"),date("Y-10-1")], [date("Y-10-1"),date("Y-11-1")], [date("Y-11-1"),date("Y-12-1")],);
+
+           foreach($date as $u){
+
+             $get_count = DB::table('checkins')->select(
+                   'checkins.*'
+                   )
+                   ->whereBetween('start_at', [$u])
+                   ->count();
+             $get_date[] = $get_count;
+
+           }
+
+           $get_now = date("Y-m-d");
+
+           $get_mem_type = [];
+           $ran = array(1,2,3,4);
+           foreach($ran as $u){
+
+             $get_count = DB::table('members')->select(
+                   'members.*'
+                   )
+                   ->where('type_mem', $u)
+                   ->count();
+             $get_mem_type[] = $get_count;
+
+           }
+
+           $get_count_set = 0;
+
+           $s1 = 0;
+           $s2 = 0;
+           $s3 = 0;
+           $s4 = 0;
+           $member_set = member::all();
+           foreach($member_set as $u){
+
+             $get_date2 = strtotime($u->end_at) - strtotime($get_now);
+
+             $data_2 = ($get_date2/86400);
+             //echo $data_2;
+             $u->days = $data_2;
+             if($data_2 <= 30 && $data_2 > 15 ){
+               $s1++;
+             }elseif($data_2 <= 15 && $data_2 > 0 ){
+               $s2++;
+             }elseif($data_2 >= 30){
+               $s3++;
+             }else{
+               $s4++;
+             }
+
+
+             }
+        //   $get_date = date("Y-m-d");
+          $get_mem_status = array($s1,$s2,$s3,$s4);
+
+          $get_data_user = DB::table('members')
+                ->get();
+                $get_data_expire = 0;
+
+
+                foreach($get_data_user as $u){
+
+                  $u->get_data_expire = 0;
+
+                  //////////////////////////////////////////////////
+                  $get_date2 = strtotime($u->end_at) - strtotime($get_now);
+                  $data_2 = ($get_date2/86400);
+                  $u->days = $data_2;
+                  if($data_2 < 30){
+                    $u->get_data_expire = 1;
+                    $get_data_expire++;
+                  }
+                  //////////////////////////////////////////////
+
+                }
+
+
+          $data['objs'] = $get_data_user;
+
+          $a = 1;
+          $data['a'] = $a;
+
+
+        //  dd($get_mem_status);
+          $data['get_mem_status'] = $get_mem_status;
+          $data['get_data_expire'] = $get_data_expire;
+           //dd($get_date);
+           $data['get_mem_type'] = $get_mem_type;
+           $data['get_array'] = $get_array;
+           $data['get_all_count'] = $get_all_count;
+           $data['get_date'] = $get_date;
+
+          // return view('admin.dashboard.search', $data);
+          return view('admin.dashboard.owner', $data);
+         }
+
+
 
 
 

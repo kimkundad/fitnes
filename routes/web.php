@@ -27,6 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'admin'], function() {
 
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
+  Route::get('admin/owner', 'DashboardController@owner')->name('owner');
+
   Route::resource('admin/category', 'CategoryController');
   Route::resource('admin/course', 'CourseController');
   Route::get('admin/table_course', 'Course_tableController@index');

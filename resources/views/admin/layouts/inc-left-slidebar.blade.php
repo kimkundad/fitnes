@@ -40,6 +40,13 @@
                             </li>
 
                             <li>
+                                <a href="{{url('admin/owner')}}" {{ (Request::is('admin/owner*') ? 'class=mm-active' : '') }} >
+                                    <i class="metismenu-icon pe-7s-airplay">
+                                    </i>Dashboard / owner
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-users"></i>
                                     สมาชิก

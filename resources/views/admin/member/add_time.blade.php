@@ -75,6 +75,9 @@
                                                       <option value="3" @if($objs->type_mem == 3)
                                     selected='selected'
                                     @endif>รายปี</option>
+                                                      <option value="4" @if($objs->type_mem == 4)
+                                    selected='selected'
+                                    @endif>Trainer Only</option>
                                                   </select>
                                                   </div>
 

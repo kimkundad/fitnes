@@ -140,6 +140,7 @@ class MemberController extends Controller
        $this->validate($request, [
         'search' => 'required'
       ]);
+      
       $search = $request->get('search');
 
       //dd($search);
