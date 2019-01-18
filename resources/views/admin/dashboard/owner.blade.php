@@ -311,7 +311,7 @@ var myChart = new Chart(ctx, {
               @endforeach
               @endif
             ],
-            backgroundColor:[window.chartColors.red,window.chartColors.orange,window.chartColors.yellow,window.chartColors.green,window.chartColors.blue],
+            backgroundColor:[window.chartColors.orange,window.chartColors.yellow,window.chartColors.green,window.chartColors.red],
         }]
     },
     options: {
