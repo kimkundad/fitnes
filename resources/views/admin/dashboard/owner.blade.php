@@ -23,12 +23,8 @@
 
 
                             <div class="page-title-actions">
-                              <a href="{{url('admin/table_course/create')}}"  class="btn-shadow btn btn-info">
-                                  <span class="btn-icon-wrapper pr-2 opacity-7">
-                                      <i class="icon ion-android-add"></i>
-                                  </span>
-                                  เพิ่ม CLASS
-                              </a>
+
+                              
 
                             </div>
 
@@ -293,7 +289,7 @@ $(document).ready(function(){
     type : "GET",
     success : function(data){
       console.log(data);
-    
+
     /*var chartdata = [{
         data: [86,114,106,106,107,111,133,221,783,2478],
         label: "Jan",
