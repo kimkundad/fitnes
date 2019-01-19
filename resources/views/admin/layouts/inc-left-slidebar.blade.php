@@ -67,7 +67,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{url('admin/check_in_member')}}" {{ (Request::is('admin/check_in_member') ? 'class=mm-active' : '') }}>
+                                        <a href="{{url('admin/check_in_member')}}" {{ (Request::is('admin/check_in_member') ? 'class=mm-active' : '') }} {{ (Request::is('admin/search_mem_checkin') ? 'class=mm-active' : '') }}>
                                             <i class="metismenu-icon">
                                             </i>หน้าเช็คอิน
                                         </a>
