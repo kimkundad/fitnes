@@ -231,6 +231,61 @@ class DashboardController extends Controller
 
          }
 
+         public function followersdata(){
+
+           $ran_x = array(1,2,3,4);
+           $get_date = [];
+           for ($i = 0; $i < sizeof($ran_x); $i++) {
+           $date = array([date("Y-1-1"),date("Y-2-1")], [date("Y-2-1"),date("Y-3-1")], [date("Y-3-1"),date("Y-4-1")], [date("Y-4-1"),date("Y-5-1")], [date("Y-5-1"),date("Y-6-1")],
+           [date("Y-6-1"),date("Y-7-1")], [date("Y-7-1"),date("Y-8-1")], [date("Y-8-1"),date("Y-9-1")], [date("Y-9-1"),date("Y-10-1")], [date("Y-10-1"),date("Y-11-1")], [date("Y-11-1"),date("Y-12-1")],);
+
+
+             for ($j = 0; $j < sizeof($date); $j++) {
+
+             $get_count = DB::table('members')->select(
+                   'members.*'
+                   )
+                   ->where('type_mem', $ran_x[$i])
+                   ->whereBetween('created_at', $date[$j])
+                   ->count();
+
+
+             $get_date[$j] = $get_count;
+
+           }
+
+           if($i == 1){
+             $set_label = 'รายปี';
+             $set_color = '#3e95cd';
+;             }elseif($i == 2){
+               $set_label = 'รายเดือน';
+               $set_color = '#8e5ea2';
+               }elseif($i == 3){
+                 $set_label = 'รายวัน';
+                 $set_color = '#3cba9f';
+                 }else{
+                   $set_label = 'Trainer';
+                   $set_color = '#e8c3b9';
+                   }
+
+           $set_date_2[] = [
+             'data' => $get_date,
+             'label' => $set_label,
+             'borderColor' => $set_color,
+             'fill' => false
+          ];
+
+           }
+
+           return response()->json(
+             $set_date_2
+             );
+
+
+           //dd($set_date_2);
+
+         }
+
 
          public function owner(){
 
@@ -257,21 +312,11 @@ class DashboardController extends Controller
 
            }
 
-           $get_date = [];
 
-           $date = array([date("Y-1-1"),date("Y-2-1")], [date("Y-2-1"),date("Y-3-1")], [date("Y-3-1"),date("Y-4-1")], [date("Y-4-1"),date("Y-5-1")], [date("Y-5-1"),date("Y-6-1")],
-           [date("Y-6-1"),date("Y-7-1")], [date("Y-7-1"),date("Y-8-1")], [date("Y-8-1"),date("Y-9-1")], [date("Y-9-1"),date("Y-10-1")], [date("Y-10-1"),date("Y-11-1")], [date("Y-11-1"),date("Y-12-1")],);
 
-           foreach($date as $u){
 
-             $get_count = DB::table('checkins')->select(
-                   'checkins.*'
-                   )
-                   ->whereBetween('start_at', [$u])
-                   ->count();
-             $get_date[] = $get_count;
 
-           }
+           //dd($set_date_2);
 
            $get_now = date("Y-m-d");
 
@@ -352,7 +397,7 @@ class DashboardController extends Controller
            $data['get_mem_type'] = $get_mem_type;
            $data['get_array'] = $get_array;
            $data['get_all_count'] = $get_all_count;
-           $data['get_date'] = $get_date;
+
 
           // return view('admin.dashboard.search', $data);
           return view('admin.dashboard.owner', $data);
