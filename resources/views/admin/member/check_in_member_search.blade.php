@@ -65,7 +65,7 @@
                                           <div class="menu-header-image" >
                                           <img src="{{url('assets/images/123456.png')}}" style="width:100%">
                                         </div>
-                                            <div class="menu-header-content" style="width:100%; bottom:-110px;">
+                                            <div class="menu-header-content" style="width:100%; bottom:-70px;">
 
 
                                                 <div class=" rounded" style=" z-index:99; ">
@@ -82,7 +82,7 @@
                                     <ul class="list-group list-group-flush">
                                       <li class="p-0 list-group-item">
                                           <div class="widget-content">
-                                              <div class="text-center" style = 'margin-top: 190px; width:100%'>
+                                              <div class="text-center" style = 'margin-top: 150px; width:100%'>
                                                 <div class="menu-header-btn-pane">
                                                   <div class="menu-header-btn-pane">
                                                     <h5 style="font-size: 22px;; color:#f30f1a; margin-bottom: .2rem;" >ยินดีต้อนรับคุณ </h5>
