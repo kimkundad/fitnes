@@ -70,7 +70,7 @@
 
                                                 <div class=" rounded" style=" z-index:99; ">
                                                   <h5 style="font-size: 1.2rem; " > {{$objs->no_mem}} </h5>
-                                                    <img  class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" style="width: 40%; margin-bottom:-110px;  border-radius: 50%;">
+                                                    <img  class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" style="width: 45%; margin-bottom:-110px;  border-radius: 50%;">
 
                                                 </div>
 
@@ -85,8 +85,8 @@
                                               <div class="text-center" style = 'margin-top: 190px; width:100%'>
                                                 <div class="menu-header-btn-pane">
                                                   <div class="menu-header-btn-pane">
-                                                    <h5 style="font-size: 26px;; color:#f30f1a; margin-bottom: .2rem;" >ยินดีต้อนรับคุณ </h5>
-                                                      <h5 style="font-size: 22px;; color:#f30f1a; margin-bottom: .2rem;" > {{$objs->first_name_mem}} {{$objs->last_name_mem}}</h5>
+                                                    <h5 style="font-size: 22px;; color:#f30f1a; margin-bottom: .2rem;" >ยินดีต้อนรับคุณ </h5>
+                                                      <h5 style="font-size: 18px;; color:#f30f1a; margin-bottom: .2rem;" > {{$objs->first_name_mem}} {{$objs->last_name_mem}}</h5>
                                                       <button type="button" class="btn-wide btn-shadow btn btn-danger">@if($objs->type_mem == 1)
                                                       รายวัน
                                                       @elseif($objs->type_mem == 2)
