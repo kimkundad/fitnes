@@ -19,6 +19,6 @@
     background: url(../assets/images/logo-inverse.png?v3);
 }
 .app-header {
-    height: 68px;
+    height: 72px;
 }
 </style>
