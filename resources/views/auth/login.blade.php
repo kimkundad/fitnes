@@ -21,6 +21,11 @@
       height: 37px;
       width: 155px;
     }
+    .app-logo {
+      height: 69px;
+      width: 162px;
+    background: url(assets/images/logo-inverse.png?v3);
+}
     </style>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow">

@@ -16,7 +16,17 @@
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
-
+    <style>
+    .app-logo {
+      height: 37px;
+      width: 155px;
+    }
+    .app-logo {
+      height: 69px;
+      width: 162px;
+    background: url(assets/images/logo-inverse.png?v3);
+    }
+    </style>
 <link href="{{ url('main.b4e6647d7c747f30c87e.css') }}" rel="stylesheet"></head>
 
 <body>

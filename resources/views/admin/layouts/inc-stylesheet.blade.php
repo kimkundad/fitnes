@@ -13,5 +13,12 @@
     width: 155px;
 
 }
-
+.app-header__logo .logo-src {
+    height: 69px;
+    width: 162px;
+    background: url(../assets/images/logo-inverse.png?v3);
+}
+.app-header {
+    height: 68px;
+}
 </style>
