@@ -125,6 +125,7 @@ class MemberController extends Controller
       $data['trainer'] = $trainer;
       return view('admin.member.get_member_his', $data);
 
+
     }
 
     /**
@@ -140,7 +141,7 @@ class MemberController extends Controller
        $this->validate($request, [
         'search' => 'required'
       ]);
-      
+
       $search = $request->get('search');
 
       //dd($search);
@@ -481,6 +482,7 @@ class MemberController extends Controller
             ->where('user_id', $id)
             ->groupBy('time_type')
             ->get();
+
             $get_array = [];
             $ran = array("ฟิตเนส","เทรนเนอร์","คลาส","ว่ายน้ำ");
             foreach($ran as $u){
@@ -645,7 +647,6 @@ class MemberController extends Controller
 
 
           $package = member::find($id);
-          $package->no_mem = $randomSixDigitInt;
           $package->pt_id = $request['pt_id'];
           $package->first_name_mem = $request['first_name_mem'];
           $package->last_name_mem = $request['last_name_mem'];
@@ -688,7 +689,6 @@ class MemberController extends Controller
         })->save('assets/images/avatar/'.$input['imagename']);
 
         $package = member::find($id);
-        $package->no_mem = $randomSixDigitInt;
         $package->pt_id = $request['pt_id'];
         $package->image_mem = $input['imagename'];
         $package->first_name_mem = $request['first_name_mem'];

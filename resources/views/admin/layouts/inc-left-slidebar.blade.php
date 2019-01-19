@@ -75,7 +75,7 @@
                                     <li>
                                         <a href="{{url('admin/get_member_his')}}" {{ (Request::is('admin/get_member_his') ? 'class=mm-active' : '') }} >
                                             <i class="metismenu-icon">
-                                            </i>ประวัติสมาชิก
+                                            </i>ประวัติการเข้าใช้
                                         </a>
                                     </li>
 
@@ -99,7 +99,7 @@
                                     <li>
                                         <a href="{{url('admin/his_trainer')}}" {{ (Request::is('admin/his_trainer') ? 'class=mm-active' : '') }}>
                                             <i class="metismenu-icon">
-                                            </i>ประวัติ Trainers
+                                            </i>ประวัติ การสอน
                                         </a>
                                     </li>
 
