@@ -47,8 +47,24 @@
                           </div>
                     </div>
 
+
+<style>
+.dropdown-menu-header .menu-header-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    opacity: 1;
+    filter: grayscale(0%);
+    background-size: cover;
+}
+</style>
 <div class="tabs-animation">
                         <div class="row">
+
+
                             <div class="col-lg-6 offset-md-3">
 
 
@@ -66,6 +82,72 @@
                                       </form>
                                   </div>
                                   <br />
+
+
+                                  <div class="mb-3 profile-responsive card">
+                                    <div class="dropdown-menu-header">
+                                        <div class="dropdown-menu-header-inner bg-dark">
+                                          <div class="menu-header-image" >
+                                          <img src="{{url('assets/images/123456.png')}}" style="width:100%">
+                                        </div>
+                                            <div class="menu-header-content" style="width:100%; bottom:-110px;">
+
+
+                                                <div class=" rounded" style=" z-index:99; ">
+                                                  <h5 style="font-size: 1.2rem; " > {{$objs->no_mem}} </h5>
+                                                    <img  class="rounded-circle" src="{{url('assets/images/avatar/'.$objs->image_mem)}}" style="width: 40%; margin-bottom:-110px;  border-radius: 50%;">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <ul class="list-group list-group-flush">
+                                      <li class="p-0 list-group-item">
+                                          <div class="widget-content">
+                                              <div class="text-center" style = 'margin-top: 190px; width:100%'>
+                                                <div class="menu-header-btn-pane">
+                                                  <div class="menu-header-btn-pane">
+                                                    <h5 style="font-size: 26px;; color:#f30f1a; margin-bottom: .2rem;" >ยินดีต้อนรับคุณ </h5>
+                                                      <h5 style="font-size: 22px;; color:#f30f1a; margin-bottom: .2rem;" > {{$objs->first_name_mem}} {{$objs->last_name_mem}}</h5>
+                                                      <button type="button" class="btn-wide btn-shadow btn btn-danger">@if($objs->type_mem == 1)
+                                                      รายวัน
+                                                      @elseif($objs->type_mem == 2)
+                                                      รายเดือน
+                                                      @else
+                                                      รายปี
+                                                      @endif</button>
+                                                  </div>
+                                                  <img style="margin:0 auto; width: 55%;" class="img-responsive" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(300)->generate($objs->no_mem)) !!} "><br />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                      <li class="p-0 list-group-item">
+                                          <div class="grid-menu grid-menu-2col" style="background-color: #343a40 !important;">
+                                              <div class="no-gutters row">
+                                                  <div class="col-sm-12">
+                                                      <div class="p-1 text-center" >
+                                                        <h6 class="menu-header-subtitle" style="color:#fff; padding-bottom:10px;">หมดอายุสมาชิก <?php echo DateThai($objs->end_at); ?><br />ออกบัตร <?php echo DateThai($objs->start_at); ?></h6>
+
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+
+
+
+                              
+
+
                                 </div>
                             </div>
 
@@ -74,106 +156,9 @@
 
                             </div>
 
-                            <div class="col-lg-12 ">
 
 
 
-                              <br />
-                              <div class="main-card card">
-                              <div class="card-body">
-                                <h5 class="card-title">ผลการค้นหา</h5>
-
-                                <table style="width: 100%;"  class="table table-hover table-striped ">
-                                  <thead>
-                                  <tr>
-                                      <th>หมายเลขสมาชิก</th>
-                                      <th>สถานะ</th>
-                                      <th>
-                                        ชื่อ-นามสกุล
-                                      </th>
-
-
-
-                                      <th>ประเภท</th>
-                                      <th>จำนวน ขม.T.</th>
-                                      <th>
-
-                                      </th>
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                    @if(isset($objs))
-                                    @foreach($objs as $u)
-                                    <tr id="{{$u->id}} ">
-                                      <td>
-                                        #{{$u->no_mem}}
-                                      </td>
-                                      <td>
-                                        <button class="mb-2 mr-2 btn btn-success btn-sm">{{$u->start_at}}
-                                              </button>
-                                      </td>
-                                      <td>
-                                        <div class="widget-content p-0">
-                                                          <div class="widget-content-wrapper">
-
-                                                              <div class="widget-content-left mr-3">
-                                                                  <div class="widget-content-left">
-                                                                      <a href="{{url('admin/member/'.$u->id.'/history')}}"><img width="40" class="rounded-circle" src="{{url('assets/images/avatar/'.$u->image_mem)}}" alt=""></a>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="widget-content-left flex2">
-                                                                  <div class="widget-heading"><a href="{{url('admin/member/'.$u->id.'/history')}}">{{$u->first_name_mem}} {{$u->last_name_mem}}</a></div>
-                                                                  <div class="widget-subheading">{{$u->phone_mem}}</div>
-                                                              </div>
-
-                                                          </div>
-                                                      </div>
-                                      </td>
-
-                                      <td>
-                                        @if($u->type_mem == 1)
-                                        รายวัน
-                                        @elseif($u->type_mem == 2)
-                                        รายเดือน
-                                        @else
-                                        รายปี
-                                        @endif
-                                      </td>
-                                      <td>
-                                        @if($u->pt_hr == null)
-                                        0
-                                        @else
-                                        {{$u->pt_hr}}
-                                        @endif
-                                        ชม.
-                                      </td>
-                                      <td>
-                                        <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="101" data-tp="{{$u->pt_id}}">ฟิตเนส</button>
-                                        <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="102" data-tp="{{$u->pt_id}}">เทรนเนอร์</button>
-                                        <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="103" data-tp="{{$u->pt_id}}">คลาส</button>
-                                        <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary" data-id="104" data-tp="{{$u->pt_id}}">ว่ายน้ำ</button>
-                                      </td>
-                                    </tr>
-                                    @endforeach
-                                    @endif
-
-                                  </tbody>
-
-
-                                </table>
-
-
-
-
-
-
-                              </div>
-                              </div>
-
-
-
-
-                            </div>
 
                         </div>
 

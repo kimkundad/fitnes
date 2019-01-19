@@ -79,9 +79,9 @@ class MemberController extends Controller
      $get_data = DB::table('members')->select(
            'members.*'
            )
-           ->where('no_mem', 'like', "%$search%")
-           ->orWhere('first_name_mem', 'LIKE', "%$search%")
-           ->get();
+           ->where('no_mem', $search)
+           ->orWhere('first_name_mem', $search)
+           ->first();
 
     //  dd($get_data);
       $data['search'] = $search;
