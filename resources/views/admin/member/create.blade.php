@@ -184,10 +184,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="amount_mem" placeholder="1500" value="{{ old('amount_mem') }}" type="text" class="form-control">
+                                                    <input name="amount_mem"  value="{{ old('amount_mem') }}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="re_amount_mem" placeholder="00" value="{{ old('re_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="re_amount_mem"  value="{{ old('re_amount_mem') }}" type="text" class="form-control">
                                                   </div>
 
 
@@ -223,7 +223,7 @@
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนชั่วโมง</label>
-                                                      <input name="pt_hr" placeholder="1500" type="text" value="{{ old('pt_hr') }}" class="form-control">
+                                                      <input name="pt_hr" type="text" value="{{ old('pt_hr') }}" class="form-control">
                                                     </div>
 
                                                     <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">วันที่หมดอายุ</label>
@@ -245,10 +245,10 @@
 
 
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">จำนวนเงิน</label>
-                                                    <input name="pt_amount_mem" placeholder="1500" value="{{ old('pt_amount_mem') }}" type="text" class="form-control">
+                                                    <input name="pt_amount_mem"  value="{{ old('pt_amount_mem') }}" type="text" class="form-control">
                                                   </div>
                                                   <div class="position-relative form-group col-md-6"><label for="exampleEmail11" class="">ค้างชำระ</label>
-                                                    <input name="pt_re_amount_mem" placeholder="00" value="{{ old('pt_re_amount_mem') }}" value="0" type="text" class="form-control">
+                                                    <input name="pt_re_amount_mem" value="{{ old('pt_re_amount_mem') }}" value="0" type="text" class="form-control">
                                                   </div>
 
 

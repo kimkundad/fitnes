@@ -189,7 +189,9 @@
                                   @if(isset($objs))
                                   @foreach($objs as $u)
 
-                                  <?php $get_date2 = strtotime($u->end_at) - strtotime($get_date);
+                                  <?php
+
+                                  $get_date2 = strtotime($u->end_at) - strtotime($get_date);
                                   $percen = 0;
                                   $data_2 = ($get_date2/86400);
                                   //echo $data_2;

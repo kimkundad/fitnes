@@ -125,7 +125,6 @@ class MemberController extends Controller
       $data['trainer'] = $trainer;
       return view('admin.member.get_member_his', $data);
 
-
     }
 
     /**
