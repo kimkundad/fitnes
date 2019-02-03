@@ -24,7 +24,7 @@
 
                             <div class="page-title-actions">
 
-                              
+
 
                             </div>
 
@@ -343,7 +343,7 @@ var ctx = document.getElementById("myChart2");
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ["รายปี","รายเดือน","รายวัน","Trainer Only"],
+        labels: ["รายวัน","รายเดือน","รายปี","Trainer Only"],
         datasets: [{
             label: '# of Votes',
             data: [
