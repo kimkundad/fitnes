@@ -205,7 +205,7 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ["รายปี","รายเดือน","รายวัน","Trainer Only"],
+        labels: ["รายวัน","รายเดือน","รายปี","Trainer Only"],
         datasets: [{
             label: '# of Votes',
             data: [
