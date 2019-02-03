@@ -254,13 +254,13 @@ class DashboardController extends Controller
 
            }
 
-           if($i == 1){
+           if($i == 3){
              $set_label = 'รายปี';
              $set_color = '#3e95cd';
 ;             }elseif($i == 2){
                $set_label = 'รายเดือน';
                $set_color = '#8e5ea2';
-               }elseif($i == 3){
+               }elseif($i == 1){
                  $set_label = 'รายวัน';
                  $set_color = '#3cba9f';
                  }else{

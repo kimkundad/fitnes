@@ -19,6 +19,12 @@ Route::auth();
 
 Auth::routes();
 
+Route::get('change/{locale}', function ($locale) {
+	App::setLocale($locale);
+  session(['locale' => $locale]);
+  return Redirect::back();
+});
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
