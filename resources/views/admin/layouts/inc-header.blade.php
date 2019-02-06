@@ -1,3 +1,12 @@
+
+<style>
+.app-header__logo .logo-src {
+    height: 69px;
+    width: 162px;
+    background: url({{url('assets/images/logo-inverse.png?v3')}});
+}
+</style>
+
 <div class="app-header header-shadow" >
         <div class="app-header__logo" style="background: rgba(250,251,252,0.1); border-right:none">
             <div class="logo-src"></div>
