@@ -117,7 +117,8 @@ class MemberController extends Controller
             )
             ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
             ->leftjoin('members', 'members.id',  'checkins.user_id')
-            ->get();
+            ->orderBy('checkins.id', 'desc')
+            ->paginate(15);
 
       $s = 1;
       $data['s'] = $s;

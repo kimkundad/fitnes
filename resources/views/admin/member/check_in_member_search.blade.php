@@ -65,7 +65,7 @@
                                           <div class="menu-header-image" >
                                           <img src="{{url('assets/images/123456.png')}}" style="width:100%">
                                         </div>
-                                            <div class="menu-header-content" style="width:100%; bottom:-70px;">
+                                            <div class="menu-header-content" style="width:100%; bottom:-100px;">
 
 
                                                 <div class=" rounded" style=" z-index:99; ">
@@ -82,7 +82,7 @@
                                     <ul class="list-group list-group-flush">
                                       <li class="p-0 list-group-item">
                                           <div class="widget-content">
-                                              <div class="text-center" style = 'margin-top: 150px; width:100%'>
+                                              <div class="text-center" style = 'margin-top: 175px; width:100%'>
                                                 <div class="menu-header-btn-pane">
                                                   <div class="menu-header-btn-pane">
                                                     <h5 style="font-size: 22px;; color:#f30f1a; margin-bottom: .2rem;" >ยินดีต้อนรับคุณ </h5>
@@ -116,17 +116,22 @@
                                           </div>
                                       </li>
                                     </ul>
+
+
                                 </div>
 
 
-
+                                <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary btn-block" data-id="101" data-tp="{{$objs->id}}">ฟิตเนส</button>
+                                <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary btn-block" data-id="102" data-tp="{{$objs->id}}">เทรนเนอร์</button>
+                                <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary btn-block" data-id="103" data-tp="{{$objs->id}}">คลาส</button>
+                                <button class="btn-f mb-2 mr-2 btn-pill btn-transition btn btn-outline-primary btn-block" data-id="104" data-tp="{{$objs->id}}">ว่ายน้ำ</button>
 
 
 
                                 </div>
                             </div>
 
-
+                            <br /><br /><br /><br />
 
 
                             </div>
@@ -159,7 +164,7 @@ $(document).ready(function(){
 
     console.log(abc);
        e.preventDefault();
-    var user_id = $(this).closest('tr').attr('id');
+    var user_id = {{$objs->id}};
 
     $.ajax({
             type:'POST',

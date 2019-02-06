@@ -463,7 +463,7 @@ class DashboardController extends Controller
                    'mem_pays.*'
                    )
                    ->where('mem_type', $u)
-                   ->sum('mem_money_mem');
+                   ->sum(DB::raw('pt_money_mem + mem_money_mem'));
              $get_array[] = $get_count;
 
            }

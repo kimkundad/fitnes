@@ -33,8 +33,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'admin'], function() {
 
 
-  Route::get('admin/admin_owner', 'DashboardController@admin_owner')->name('admin_owner');
 
+  Route::resource('admin/admin_owner', 'StudentController');
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
   Route::get('admin/owner', 'DashboardController@owner')->name('owner');
   Route::get('followersdata', 'DashboardController@followersdata')->name('followersdata');
