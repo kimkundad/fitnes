@@ -249,7 +249,7 @@
                                       <div class="progress-bar-sm progress-bar-animated-alt progress">
                                                                     <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{$percen}}" aria-valuemin="0" aria-valuemax="{{$u->tp_hr_ba}}" style="width: {{$percen}}%;"></div>
                                                                 </div>
-
+                                                                {{$u->pt_hr}}  / {{$u->tp_hr_ba}}
                                       @endif
 
                                     </td>

@@ -254,7 +254,7 @@
                                                                 </div>
                                                                 {{$u->pt_hr}}  / {{$u->tp_hr_ba}}
                                       @endif
-                                    
+
                                     </td>
                                     <td>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/pay_member/'.$u->id)}}" style="float: left;"><b><i class="pe-7s-cash btn-icon-wrapper"> </i> ประวัตเติมเงิน</b></a>
