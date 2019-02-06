@@ -39,12 +39,20 @@
                                 </a>
                             </li>
 
+                            @if(Auth::user()->id == 1)
                             <li>
                                 <a href="{{url('admin/owner')}}" {{ (Request::is('admin/owner*') ? 'class=mm-active' : '') }} >
                                     <i class="metismenu-icon pe-7s-airplay">
                                     </i>Dashboard / owner
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{url('admin/admin_owner')}}" {{ (Request::is('admin/admin_owner*') ? 'class=mm-active' : '') }} >
+                                    <i class="metismenu-icon pe-7s-door-lock">
+                                    </i>จัดการ Admin
+                                </a>
+                            </li>
+                            @endif
 
                             <li>
                                 <a href="#">
