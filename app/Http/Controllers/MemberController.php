@@ -247,11 +247,23 @@ class MemberController extends Controller
 
        $user_id = $request['user_id'];
 
-
+       if($request['pt_amount_mem'] == null){
+         $pt_amount_mem = 0;
+       }else{
+         $pt_amount_mem = $request['pt_amount_mem'];
+       }
+       if($request['amount_mem'] == null){
+         $amount_mem= 0;
+       }else{
+         $amount_mem= $request['amount_mem'];
+       }
 
        $objs = member::find($user_id);
        $pt_hr_mem_old = 0;
        $pt_hr_mem_old = $objs->pt_hr + $request['pt_hr'];
+
+
+
 
        $obj = new mem_pay();
        $obj->user_id = $user_id;
@@ -259,12 +271,12 @@ class MemberController extends Controller
        $obj->admin_id = Auth::user()->id;
        $obj->pt_id = $request['pt_id'];
        $obj->pt_hr_mem = $request['pt_hr'];
-       $obj->pt_money_mem = $request['pt_amount_mem'];
+       $obj->pt_money_mem = $pt_amount_mem;
        $obj->pt_money_mem_re = $request['pt_re_amount_mem'];
        $obj->pt_hr_mem_old = $objs->pt_hr;
        $obj->pt_pay_type = $request['pt_pay_type_mem'];
        $obj->pay_type = $request['pay_type_mem'];
-       $obj->mem_money_mem = $request['amount_mem'];
+       $obj->mem_money_mem = $amount_mem;
        $obj->mem_money_mem_re = $request['re_amount_mem'];
        $obj->pt_note = $request['pt_remark_mem'];
        $obj->note = $request['remark_mem'];
@@ -356,7 +368,16 @@ class MemberController extends Controller
         $package->pt_remark_mem = $request['pt_remark_mem'];
         $package->save();
 
-
+        if($request['pt_amount_mem'] == null){
+          $pt_amount_mem = 0;
+        }else{
+          $pt_amount_mem = $request['pt_amount_mem'];
+        }
+        if($request['amount_mem'] == null){
+          $amount_mem= 0;
+        }else{
+          $amount_mem= $request['amount_mem'];
+        }
 
 
         $obj = new mem_pay();
@@ -365,12 +386,12 @@ class MemberController extends Controller
         $obj->mem_type = $request['type_mem'];
         $obj->pt_id = $request['pt_id'];
         $obj->pt_hr_mem = $request['pt_hr'];
-        $obj->pt_money_mem = $request['pt_amount_mem'];
+        $obj->pt_money_mem = $pt_amount_mem;
         $obj->pt_money_mem_re = $request['pt_re_amount_mem'];
         $obj->pt_hr_mem_old = 0;
         $obj->pt_pay_type = $request['pt_pay_type_mem'];
         $obj->pay_type = $request['pay_type_mem'];
-        $obj->mem_money_mem = $request['amount_mem'];
+        $obj->mem_money_mem = $amount_mem;
         $obj->mem_money_mem_re = $request['re_amount_mem'];
         $obj->pt_note = $request['pt_remark_mem'];
         $obj->note = $request['remark_mem'];

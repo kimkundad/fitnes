@@ -35,6 +35,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
   Route::get('admin/owner', 'DashboardController@owner')->name('owner');
   Route::get('followersdata', 'DashboardController@followersdata')->name('followersdata');
+  Route::post('search_date_owner', 'DashboardController@search_date_owner')->name('search_date_owner');
 
 
   Route::resource('admin/category', 'CategoryController');
@@ -68,5 +69,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/check_in_member', 'MemberController@check_in_member')->name('check_in_member');
   Route::get('admin/pay_member/{id}', 'MemberController@pay_member')->name('pay_member');
   Route::post('admin/search_mem_checkin', 'MemberController@search_mem_checkin')->name('search_mem_checkin');
+
+
 
 });

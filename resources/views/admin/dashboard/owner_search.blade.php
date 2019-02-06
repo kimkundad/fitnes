@@ -40,9 +40,9 @@
                               <form class="" method="POST" action="{{url('search_date_owner')}}" id='formId' enctype="multipart/form-data" novalidate="novalidate">
                               {{ csrf_field() }}
 
-                              <input id="date_timepicker_start" type="text" value="{{date("Y-m-d")}}" name="start_day" class="input-new">
+                              <input id="date_timepicker_start" type="text" value="{{$start_day}}" name="start_day" class="input-new">
                               to
-                              <input id="date_timepicker_end" name="end_day" type="text" value="{{date("Y-m-d")}}" class="input-new">
+                              <input id="date_timepicker_end" name="end_day" type="text" value="{{$end_day}}" class="input-new">
                               <button type="submit" data-toggle="tooltip" style="height: 37px; margin-top:-5px;" data-placement="bottom" class="btn-shadow mr-3 btn btn-info">
                                     <i class="pe-7s-search"></i>
                                 </button>
@@ -99,8 +99,8 @@
                                                 <h5 class="card-title" style="font-size:18px; margin-bottom: 1rem;">ยอดขายค่าสมาชิก</h5></div>
                                               </div>
                                               </div>
-                                              <br />
 
+                                              <br />
                                               <div class="main-card card">
                                               <div class="card-body">
                                               <div class="widget-chart-content ">
@@ -113,9 +113,10 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <h5 class="card-title" style="font-size:18px; margin-bottom: 1rem;">ยอดการเข้าใช้งานวันนี้</h5></div>
+                                                                    <h5 class="card-title" style="font-size:18px; margin-bottom: 1rem;">ยอดการเข้าใช้งาน</h5></div>
                                                                   </div>
                                                                   </div>
+
 
                                               <br />
                                               <div class="main-card card">
