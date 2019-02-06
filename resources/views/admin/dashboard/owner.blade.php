@@ -6,8 +6,22 @@
 .search-wrapper.active .input-holder {
     width: 480px;
 }
-</style>
+.input-new{
 
+
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: .88rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="{{url('assets/datetimepicker-master/jquery.datetimepicker.css')}}"/>
 <div class="app-page-title">
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
@@ -22,11 +36,18 @@
                             </div>
 
 
-                            <div class="page-title-actions">
+                            <div class="page-title-actions" style="">
+                              <form class="" method="POST" action="{{url('search_date')}}" id='formId' enctype="multipart/form-data" novalidate="novalidate">
+                              {{ csrf_field() }}
 
-
-
+                              <input id="date_timepicker_start" type="text" value="{{date("Y-m-d")}}" class="input-new"> to <input id="date_timepicker_end" type="text" value="{{date("Y-m-d")}}" class="input-new">
+                              <button type="submit" data-toggle="tooltip" style="height: 37px; margin-top:-5px;" data-placement="bottom" class="btn-shadow mr-3 btn btn-info">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                              </form>
                             </div>
+
+
 
 
 
@@ -200,7 +221,39 @@
 <script type="text/javascript" src="{{url('assets/fullcalendar/fullcalendar.min.js')}}"></script>
 <script type="text/javascript" src="{{url('assets/fullcalendar/locale/th.js')}}"></script>
 
+<script src="{{url('assets/datetimepicker-master/build/jquery.datetimepicker.full.js?v2')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
 <script>
+jQuery(function(){
+ jQuery('#date_timepicker_start').datetimepicker({
+  format:'Y-m-d',
+  onShow:function( ct ){
+   this.setOptions({
+    maxDate:jQuery('#date_timepicker_end').val()?jQuery('#date_timepicker_end').val():false
+   })
+  },
+  timepicker:false
+ });
+ jQuery('#date_timepicker_end').datetimepicker({
+  format:'Y-m-d',
+  onShow:function( ct ){
+   this.setOptions({
+    minDate:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
+   })
+  },
+  timepicker:false
+ });
+});
+</script>
+
+<script>
+
+
+
+
+
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'pie',
@@ -288,7 +341,7 @@ $(document).ready(function(){
     url : "{{url('followersdata')}}",
     type : "GET",
     success : function(data){
-      console.log(data);
+      //console.log(data);
 
     /*var chartdata = [{
         data: [86,114,106,106,107,111,133,221,783,2478],
