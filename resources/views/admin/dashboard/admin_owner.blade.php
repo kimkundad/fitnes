@@ -9,18 +9,18 @@
                                     <i class="pe-7s-light icon-gradient bg-tempting-azure">
                                     </i>
                                 </div>
-                                <div>ประเภท Class
-                                    <div class="page-title-subheading">ประเภท Class ต่างๆที่อนู่ใน GT fitnes ทั้งหมด
+                                <div>รายชื่อพนักงาน
+                                    <div class="page-title-subheading">รายชื่อพนักงาน ที่อนู่ใน GT fitnes ทั้งหมด
                                     </div>
                                 </div>
                             </div>
 
                             <div class="page-title-actions">
-                              <a href="{{url('admin/category/create')}}"  class="btn-shadow btn btn-info">
+                              <a href="{{url('admin/admin_owner_create')}}"  class="btn-shadow btn btn-info">
                                   <span class="btn-icon-wrapper pr-2 opacity-7">
                                       <i class="icon ion-android-add"></i>
                                   </span>
-                                  เพิ่มประเภท CLASS
+                                  เพิ่มพนักงาน
                               </a>
 
                             </div>
@@ -46,26 +46,32 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่อ Class</th>
+                                    <th>ชื่อ user</th>
                                     <th>
-                                      จำนวน Class
+                                      email
                                     </th>
                                     <th>
-                                      จำนวน ผู้ใช้บริการ
+                                      position
                                     </th>
                                     <th>จัดการ</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                  @if($objs)
-                                  @foreach($objs as $u)
+                                  @if($user)
+                                  @foreach($user as $u)
                                 <tr>
                                     <td>{{$s}}</td>
-                                    <td>{{$u->name_cat}}</td>
-                                    <td>{{$u->get_count}}</td>
-                                    <td></td>
+                                    <td>{{$u->name}}</td>
+                                    <td>{{$u->email}}</td>
                                     <td>
-                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" href="{{url('admin/category/'.$u->id.'/edit')}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
+                                      @if($u->id == 1)
+                                      owner
+                                      @else
+                                      admin
+                                      @endif
+                                    </td>
+                                    <td>
+                                      <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link" href="{{url('admin/admin_owner_edit/'.$u->id)}}" style="float: left;"><b><i class="pe-7s-config btn-icon-wrapper"> </i> แก้ไข</b></a>
 
 
                                       <form  action="{{url('admin/category/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">

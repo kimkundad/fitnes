@@ -34,7 +34,7 @@ Route::group(['middleware' => 'admin'], function() {
 
 
   Route::get('admin/admin_owner', 'DashboardController@admin_owner')->name('admin_owner');
-  
+
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
   Route::get('admin/owner', 'DashboardController@owner')->name('owner');
   Route::get('followersdata', 'DashboardController@followersdata')->name('followersdata');
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('edit_c_t/{id}', 'CourseController@edit_c_t');
   Route::post('edit_c_t_post', 'Course_tableController@edit_c_t_post');
   Route::post('search_mem', 'MemberController@search_mem');
-  Route::post('search_mem_dash', 'DashboardController@search_mem');
+  Route::post('admin/search_mem_dash', 'DashboardController@search_mem');
   Route::post('api/api_tech_status', 'DashboardController@api_tech_status');
   Route::post('admin/add_time_post', 'MemberController@add_time_post');
 

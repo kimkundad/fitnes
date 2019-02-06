@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\course;
+use App\User;
 use App\checkin;
 use App\member;
 
@@ -71,6 +72,16 @@ class DashboardController extends Controller
       $data['get_data_expire'] = $get_data_expire;
       $data['get_data_expire1'] = $get_data_expire1;
       return view('admin.dashboard.index', $data);
+    }
+
+
+    public function admin_owner(){
+
+      $user = User::all();
+      $data['user'] = $user;
+      $s = 1;
+      $data['s'] = $s;
+      return view('admin.dashboard.admin_owner', $data);
     }
 
     public function search_mem(Request $request)
