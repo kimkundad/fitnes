@@ -37,7 +37,7 @@
 
 
                             <div class="page-title-actions" style="">
-                              <form class="" method="POST" action="{{url('search_date_owner')}}" id='formId' enctype="multipart/form-data" novalidate="novalidate">
+                              <form class="" method="POST" action="{{url('admin/search_date_owner')}}" id='formId' enctype="multipart/form-data" novalidate="novalidate">
                               {{ csrf_field() }}
 
                               <input id="date_timepicker_start" type="text" value="{{date("Y-m-d")}}" name="start_day" class="input-new">

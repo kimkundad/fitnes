@@ -231,6 +231,15 @@ class DashboardController extends Controller
 
          }
 
+         public function followersdata_2(Request $request){
+
+           $start_day = $request['start_day'];
+           $end_day = $request['end_day'];
+
+
+
+         }
+
          public function followersdata(){
 
            $ran_x = array(1,2,3,4);

@@ -35,7 +35,8 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/dashboard', 'DashboardController@index')->name('dashboard');
   Route::get('admin/owner', 'DashboardController@owner')->name('owner');
   Route::get('followersdata', 'DashboardController@followersdata')->name('followersdata');
-  Route::post('search_date_owner', 'DashboardController@search_date_owner')->name('search_date_owner');
+  Route::post('followersdata_2', 'DashboardController@followersdata_2')->name('followersdata_2');
+  Route::post('admin/search_date_owner', 'DashboardController@search_date_owner')->name('search_date_owner');
 
 
   Route::resource('admin/category', 'CategoryController');

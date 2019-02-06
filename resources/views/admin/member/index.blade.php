@@ -252,9 +252,9 @@
                                       <div class="progress-bar-sm progress-bar-animated-alt progress">
                                                                     <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{$percen}}" aria-valuemin="0" aria-valuemax="{{$u->tp_hr_ba}}" style="width: {{$percen}}%;"></div>
                                                                 </div>
-
+                                                                {{$u->pt_hr}}  / {{$u->tp_hr_ba}}
                                       @endif
-
+                                    
                                     </td>
                                     <td>
                                       <a class="mb-2 mr-2 btn-icon btn-icon-only btn btn-link btn-sm" href="{{url('admin/pay_member/'.$u->id)}}" style="float: left;"><b><i class="pe-7s-cash btn-icon-wrapper"> </i> ประวัตเติมเงิน</b></a>
