@@ -76,17 +76,33 @@ class MemberController extends Controller
      ]);
      $search = $request->get('search');
 
-     $get_data = DB::table('members')->select(
+     $get_count = DB::table('members')->select(
            'members.*'
            )
            ->where('no_mem', $search)
            ->orWhere('first_name_mem', $search)
-           ->first();
+           ->count();
 
-    //  dd($get_data);
-      $data['search'] = $search;
-      $data['objs'] = $get_data;
-      return view('admin.member.check_in_member_search', $data);
+     if($get_count > 0){
+
+       $get_data = DB::table('members')->select(
+             'members.*'
+             )
+             ->where('no_mem', $search)
+             ->orWhere('first_name_mem', $search)
+             ->first();
+
+      //  dd($get_data);
+        $data['search'] = $search;
+        $data['objs'] = $get_data;
+        return view('admin.member.check_in_member_search', $data);
+
+     }else{
+
+       return view('admin.member.check_in_member');
+
+     }
+
     }
 
     /**
