@@ -20,7 +20,7 @@
 
                                 <div class="search-wrapper active" >
 
-                                  <form class="" method="POST" action="{{url('search_mem_dash')}}" enctype="multipart/form-data" novalidate="novalidate">
+                                  <form class="" method="POST" action="{{url('admin/search_mem_dash')}}" enctype="multipart/form-data" novalidate="novalidate">
                                   {{ csrf_field() }}
 
                                     <div class="input-holder">
@@ -127,7 +127,7 @@
                                                                 </div>
                                                                 {{$u->pt_hr}}  / {{$u->tp_hr_ba}}
                                       @endif
-                                    
+
 
                                     </td>
                                     <td>
