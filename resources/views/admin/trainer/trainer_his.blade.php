@@ -142,7 +142,7 @@
                                       </td>
                                       <td class="text-center">
 
-                                        <?php echo DateThai($u->start_at); ?>
+                                        {{$u->start_at}}
                                       </td>
                                       <td>
                                         {{$u->time_ch}} น.
