@@ -55,6 +55,24 @@
                           <div class="row">
                               <div class="col-lg-12 ">
 
+                                <div class="main-card card">
+                                <div class="card-body">
+                                <div class="widget-chart-content ">
+                                                      <div class="widget-chart-flex">
+                                                          <div class="widget-numbers">
+                                                              <div class="widget-chart-flex">
+                                                                  <div class="fsize-4">
+                                                                      <small class="opacity-5">สมาชิก</small>
+                                                                      <span>{{number_format($check_count)}}</span></div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <h5 class="card-title" style="font-size:18px; margin-bottom: 1rem;">ยอดการเข้าใช้งานวันนี้</h5></div>
+                                                    </div>
+                                                    </div>
+
+                                <br />
+
 
                                 <div class="main-card card">
                           <div class="card-body">

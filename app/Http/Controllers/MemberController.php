@@ -136,6 +136,17 @@ class MemberController extends Controller
             ->orderBy('checkins.id', 'desc')
             ->paginate(15);
 
+            $check_count = DB::table('checkins')->select(
+                  'checkins.*'
+                  )
+                  ->whereDate('created_at', '>=', date("Y-m-d"))
+                  ->whereDate('created_at', '<=', date("Y-m-d"))
+                  ->count();
+
+
+          //  dd($get_mem_status);
+           $data['check_count'] = $check_count;
+
       $s = 1;
       $data['s'] = $s;
 
