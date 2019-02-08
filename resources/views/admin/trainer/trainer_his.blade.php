@@ -142,7 +142,7 @@
                                       </td>
                                       <td class="text-center">
 
-                                        {{$u->start_at}}
+                                      {{date("d-m-Y", strtotime($u->start_at) )}}  
                                       </td>
                                       <td>
                                         {{$u->time_ch}} น.
