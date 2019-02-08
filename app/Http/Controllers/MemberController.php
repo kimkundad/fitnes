@@ -133,7 +133,7 @@ class MemberController extends Controller
             )
             ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
             ->leftjoin('members', 'members.id',  'checkins.user_id')
-            ->orderBy('checkins.id', 'asc')
+            ->orderBy('checkins.id', 'desc')
             ->paginate(15);
 
             $check_count = DB::table('checkins')->select(
