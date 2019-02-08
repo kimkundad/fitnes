@@ -33,12 +33,7 @@
 
 
                             <div class="page-title-actions">
-                              <a href="{{url('admin/trainer/create')}}"  class="btn-shadow btn btn-info">
-                                  <span class="btn-icon-wrapper pr-2 opacity-7">
-                                      <i class="icon ion-android-add"></i>
-                                  </span>
-                                  เพิ่ม trainer
-                              </a>
+
 
                             </div>
 

@@ -139,6 +139,7 @@ class TrainerController extends Controller
               ->leftjoin('trainers', 'trainers.id',  'checkins.tp_id')
               ->leftjoin('members', 'members.id',  'checkins.user_id')
               ->where('checkins.time_type', 'เทรนเนอร์')
+              ->orderBy('checkins.id', 'desc')
               ->get();
 
         $s = 1;
