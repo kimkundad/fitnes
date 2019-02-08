@@ -55,7 +55,7 @@
                           <div class="row">
                               <div class="col-lg-12 ">
 
-                                <div class="main-card card">
+                                <div class="main-card card col-lg-3">
                                 <div class="card-body">
                                 <div class="widget-chart-content ">
                                                       <div class="widget-chart-flex">
