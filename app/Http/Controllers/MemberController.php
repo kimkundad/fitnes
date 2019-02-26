@@ -80,7 +80,7 @@ class MemberController extends Controller
            'members.*'
            )
            ->where('no_mem', $search)
-           ->orWhere('first_name_mem', $search)
+           ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
            ->count();
 
      if($get_count > 0){
@@ -89,7 +89,7 @@ class MemberController extends Controller
              'members.*'
              )
              ->where('no_mem', $search)
-             ->orWhere('first_name_mem', $search)
+             ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
              ->first();
 
       //  dd($get_data);
@@ -206,7 +206,7 @@ class MemberController extends Controller
 
         $get_data = DB::table('members')
               ->where('no_mem', 'like', "%$search%")
-              ->orWhere('first_name_mem', 'LIKE', "%$search%")
+              ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
               ->get();
         //////////////////////////////////////////
         $get_data_expire = 0;
@@ -228,7 +228,7 @@ class MemberController extends Controller
               'members.*'
               )
               ->where('no_mem', 'like', "%$search%")
-              ->orWhere('first_name_mem', 'LIKE', "%$search%")
+              ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
               ->count();
         //////////////////////////////////////////
 

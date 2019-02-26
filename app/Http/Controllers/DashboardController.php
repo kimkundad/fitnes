@@ -93,9 +93,10 @@ class DashboardController extends Controller
       //dd($search);
 
 
+
      $get_data_meme = DB::table('members')
            ->where('no_mem', $search)
-           ->orWhere('first_name_mem', 'LIKE', "%$search%")
+           ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
            ->get();
      //////////////////////////////////////////
 
@@ -104,7 +105,7 @@ class DashboardController extends Controller
            'members.*'
            )
            ->where('no_mem', $search)
-           ->orWhere('first_name_mem', 'LIKE', "%$search%")
+           ->orWhereRaw("concat(first_name_mem, ' ', last_name_mem) like '%$search%' ")
            ->count();
 
 
