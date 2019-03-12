@@ -76,6 +76,8 @@
 
                                 <div class="main-card card">
                           <div class="card-body">
+                            <div class="col-sm-12">
+
 
                               <table style="width: 100%;" class="table table-hover table-striped ">
                                   <thead>
@@ -146,8 +148,14 @@
 
                               </table>
 
-
+                              </div>
                               @include('admin.pagination.default', ['paginator' => $trainer])
+
+
+
+
+
+
                           </div>
                       </div>
 
