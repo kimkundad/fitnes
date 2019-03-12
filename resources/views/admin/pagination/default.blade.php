@@ -13,7 +13,7 @@
             <li class="page-item hidden-xs"><a href="{{ $paginator->url(1) }}">1</a></li>
         @endif
         @if($paginator->currentPage() > 4)
-            <li class="page-item"><span>...</span></li>
+            <li class="page-item">...</li>
         @endif
         @foreach(range(1, $paginator->lastPage()) as $i)
             @if($i >= $paginator->currentPage() - 2 && $i <= $paginator->currentPage() + 2)
@@ -25,7 +25,7 @@
             @endif
         @endforeach
         @if($paginator->currentPage() < $paginator->lastPage() - 3)
-            <li class="page-item"><span>...</span></li>
+            <li class="page-item">...</li>
         @endif
         @if($paginator->currentPage() < $paginator->lastPage() - 2)
             <li class="page-item hidden-xs"><a href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
