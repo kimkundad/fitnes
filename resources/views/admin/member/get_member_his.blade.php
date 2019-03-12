@@ -76,7 +76,7 @@
 
                                 <div class="main-card card">
                           <div class="card-body">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" style="overflow-x:auto;">
 
 
                               <table style="width: 100%;" class="table table-hover table-striped ">
