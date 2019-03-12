@@ -1,6 +1,4 @@
 
-
-
 @if ($paginator->hasPages())
 <nav class="pagination-rounded" aria-label="Page navigation example">
     <ul class="pagination pagination">
@@ -8,7 +6,7 @@
         @if ($paginator->onFirstPage())
             <li class="page-item disabled"><span>«</span></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">«</a></li>
+            <li class="page-item"><a href="{{ $paginator->previousPageUrl() }}" rel="prev">«</a></li>
         @endif
 
         @if($paginator->currentPage() > 3)
