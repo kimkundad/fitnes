@@ -247,7 +247,10 @@
                                                                 </div>
                                       @else
                                       <?php
-                                      $percen = (( $u->pt_hr / $u->tp_hr_ba )*100);
+                                      if($u->pt_hr > 0 && $u->tp_hr_ba > 0){
+                                        $percen = (( $u->pt_hr / $u->tp_hr_ba )*100);
+                                      }
+
                                       ?>
                                       <div class="progress-bar-sm progress-bar-animated-alt progress">
                                                                     <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{$percen}}" aria-valuemin="0" aria-valuemax="{{$u->tp_hr_ba}}" style="width: {{$percen}}%;"></div>
